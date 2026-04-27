@@ -41,3 +41,83 @@ Saída Esperada (Formate a saída RIGOROSAMENTE em Markdown com subtítulos clar
    • Pitch de WhatsApp (Pronto para Uso): (Escreva uma curta mensagem em 1ª pessoa, amigável, cirúrgica e altamente persuasiva para ser copiada e colada no WhatsApp do cliente da empresa de nome English with Thalita:
        - Foco em Autoridade e Profissionalismo. Mostre como não ter um site faz a empresa parecer menor que os concorrentes.
       - Oferta Final na Mensagem: Ofereça a visualização de um protótipo visual gratuito e sem compromisso para fisgar a atenção).
+
+
+🧾 Briefing do Cliente
+
+
+🏢 Informações Gerais
+Nome do negócio: English with Thalita
+Tipo de cliente: Autônomo
+Segmento/Nicho: Aulas de inglês com adaptação conforme objetivo do aluno
+Cidade/Estado: Curitiba - Paraná
+E-mail: koppthalita@gmail.com
+Telefone/WhatsApp: +55 19 99779-9589
+
+
+📌 Sobre o Negócio
+Descrição:
+Aulas de inglês online com foco em conversação e preparatórios para certificações internacionais, incluindo objetivos de curto prazo e específicos.
+Público-alvo:
+Não possui público específico definido. Atende alunos diversos, sem limitação geográfica, já que as aulas são 100% online.
+Diferenciais:Foco em comunicação real, Aulas personalizadas conforme necessidade do aluno
+
+
+🌐 Sobre o Site
+Possui site atualmente? Não
+Motivo para criar o site:
+Divulgação do trabalho, gerar credibilidade e aumentar recomendações
+Objetivo principal:
+Gerar leads
+Principal ação esperada do usuário:
+Entrar em contato via WhatsApp
+Será o único meio de divulgação? Não
+
+
+📄 Estrutura do Site
+Páginas desejadas:
+Home
+Sobre
+Serviços
+Portfólio
+Contato
+Outra (não especificada)
+
+
+⚙️ Funcionalidades
+Textos prontos? Não
+Imagens próprias? Parcialmente
+Blog/Notícias? Não
+Área de membros/login? Não
+E-commerce? Não
+Integrações:
+WhatsApp
+Instagram
+Formulários: Não (já possui formulário integrado externamente)
+Multilíngue? Não
+Chat online/chatbot? Não
+
+
+🎨 Design e Identidade
+Possui logotipo/identidade visual? Sim
+Manual de marca/paleta:
+Baseado nas cores do Instagram (sem preocupação com psicologia das cores)
+Referências de sites:
+Não possui referências específicas
+O que NÃO gosta:
+Sites não responsivos
+Transições exageradas
+Baixa legibilidade
+Estilo desejado: Criativo e diferente
+
+
+🌍 Infraestrutura
+Domínio registrado? Não
+Hospedagem? Não
+Quer suporte com domínio/hospedagem? Sim
+⏱️ Prazo e Investimento
+Prazo limite: 01/06/2026
+Urgência: Baixa
+Orçamento: Não definido (aberto a proposta)
+📣 Origem do Contato
+Redes sociais
