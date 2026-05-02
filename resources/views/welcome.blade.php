@@ -28,8 +28,8 @@
                             dark: '#494b46', // Texto cinza/marrom escuro
                             card: '#f4c07c', // Pêssego/Laranja claro
                             cardLight: '#ffffff', // Branco
-                            accent: '#1d8985', // Verde Teal
-                            accentHover: '#166c69',
+                            accent: '{{ $c['cor_primaria'] ?? '#1d8985' }}', // Dinâmico do Banco
+                            accentHover: '{{ $c['cor_primaria'] ?? '#1d8985' }}',
                             alert: '#e59a35', // Mostarda
                             red: '#954942', // Vermelho escuro
                             orange: '#cc5b33' // Laranja escuro
@@ -166,9 +166,9 @@
         <!-- Hero Section -->
         <section class="relative pt-16 pb-20 lg:pt-32 lg:pb-28">
             <div
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center md:items-start text-center md:text-left">
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
 
-                <div class="md:w-3/5 md:ml-auto">
+                <div class="md:w-3/5 mx-auto">
                     <!-- Retro Title Card -->
                     <div
                         class="bg-brand-card border-[3px] border-brand-dark rounded-3xl shadow-retro-lg py-8 px-10 md:py-12 md:px-16 inline-block mb-10 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
@@ -179,11 +179,11 @@
                     </div>
 
                     <p data-i18n="hero_subtitle"
-                        class="text-2xl md:text-3xl font-bold text-brand-dark mb-10 max-w-xl mx-auto md:mx-0 leading-snug">
+                        class="text-2xl md:text-3xl font-bold text-brand-dark mb-10 max-w-xl mx-auto leading-snug">
                         {{ $c['subtitulo_hero'] ?? 'Professora de inglês para quem quer se comunicar com confiança e fluência real' }}
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
                         <a href="#contato"
                             class="bg-[#25D366] text-brand-dark font-black py-4 px-8 rounded-xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl flex items-center justify-center gap-3">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>

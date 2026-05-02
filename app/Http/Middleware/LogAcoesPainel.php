@@ -39,6 +39,7 @@ class LogAcoesPainel
                 $usuario = auth()->user()?->email ?? 'Visitante';
                 $metodo = $request->method();
                 $chave = session()->get('chave_acesso', 'SEM_CHAVE');
+                $updates = [];
                 
                 // Capturar e filtrar dados enviados
                 $dadosOriginais = $request->except(['password', 'senha', 'password_confirmation', 'current_password', '_token', '_method']);
@@ -48,7 +49,6 @@ class LogAcoesPainel
                 // Se for Livewire, filtrar apenas ações reais (chamadas de métodos e mudanças de dados)
                 if ($eLivewire) {
                     $components = $request->input('components', []);
-                    $updates = [];
                     $temChamadaUsuario = false;
                     $ignorarCompletamente = false;
 

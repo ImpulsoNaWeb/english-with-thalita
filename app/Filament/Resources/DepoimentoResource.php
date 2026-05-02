@@ -53,6 +53,8 @@ class DepoimentoResource extends Resource
                         Forms\Components\FileUpload::make('avatar_autor')
                             ->label('Foto do Autor')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('depoimentos'),
                         Forms\Components\Toggle::make('esta_ativo')
                             ->label('Ativo')
@@ -67,6 +69,8 @@ class DepoimentoResource extends Resource
                         Forms\Components\FileUpload::make('seo_image')
                             ->label('Imagem Open Graph')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('seo'),
                     ])
                     ->collapsed()

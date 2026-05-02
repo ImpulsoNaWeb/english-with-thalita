@@ -49,6 +49,8 @@ class ServicoResource extends Resource
                         Forms\Components\FileUpload::make('imagem')
                             ->label('Imagem de Capa')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('servicos'),
                         Forms\Components\Toggle::make('esta_ativo')
                             ->label('Ativo')
@@ -63,6 +65,8 @@ class ServicoResource extends Resource
                         Forms\Components\FileUpload::make('seo_image')
                             ->label('Imagem Open Graph')
                             ->image()
+                            ->disk('public')
+                            ->visibility('public')
                             ->directory('seo'),
                     ])
                     ->collapsed()

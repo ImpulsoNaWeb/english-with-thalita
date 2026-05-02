@@ -221,7 +221,7 @@ class GerenciarDados extends Page implements HasTable, HasSchemas
                  throw new \Exception('O arquivo subido não é um backup criptografado válido.');
             }
 
-            $jsonDescriptografado = $this->descriptografar($dados['conteudo_criptografado'], $this->importPassword);
+            $jsonDescriptografado = $this->descriptografar($dados['conteudo_criptografado'], $password);
             if (!$jsonDescriptografado) {
                 throw new \Exception('Senha incorreta para este arquivo.');
             }

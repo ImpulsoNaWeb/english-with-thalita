@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->login(\App\Filament\Auth\Login::class)
             ->brandName('Painel English with Thalita')
             ->colors([
-                'primary' => '#1d8985',
+                'primary' => \App\Models\Configuracao::get('cor_primaria', '#1d8985'),
             ])
             ->renderHook(
                 \Filament\View\PanelsRenderHook::BODY_END,
