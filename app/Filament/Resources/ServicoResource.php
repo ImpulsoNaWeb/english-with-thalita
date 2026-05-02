@@ -15,9 +15,9 @@ class ServicoResource extends Resource
 {
     protected static ?string $model = Servico::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-wrench-screwdriver';
-    protected static ?string $modelLabel = 'Serviço';
-    protected static ?string $pluralModelLabel = 'Serviços';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $modelLabel = 'Plano de Estudo';
+    protected static ?string $pluralModelLabel = 'Planos de Estudo';
     protected static string | \UnitEnum | null $navigationGroup = 'Catálogo';
     protected static ?int $navigationSort = 4;
 
@@ -32,7 +32,7 @@ class ServicoResource extends Resource
             ->schema([
                 \Filament\Schemas\Components\Section::make('Informações do Serviço')
                     ->schema([
-                        Forms\Components\TextInput::make('titulo')
+                        Forms\Components\TextInput::make('nome')
                             ->label('Título')
                             ->required()
                             ->maxLength(255),
@@ -78,9 +78,10 @@ class ServicoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('imagem')
-                    ->label('Imagem'),
-                Tables\Columns\TextColumn::make('titulo')
-                    ->label('Serviço')
+                    ->label('Imagem')
+                    ->disk('public'),
+                Tables\Columns\TextColumn::make('nome')
+                    ->label('Título')
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('esta_ativo')
                     ->label('Ativo'),
