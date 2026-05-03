@@ -41,6 +41,15 @@ class AdminPanelProvider extends PanelProvider
                     <meta name="apple-mobile-web-app-capable" content="yes">
                     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
                     <link rel="manifest" href="/manifest.json">
+                    <style>
+                        .fi-sidebar-item-label, 
+                        .fi-sidebar-group-label, 
+                        .fi-sidebar-item-icon,
+                        .fi-sidebar-item-button span {
+                            color: #000 !important;
+                            font-weight: 600 !important;
+                        }
+                    </style>
                 ',
             )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
