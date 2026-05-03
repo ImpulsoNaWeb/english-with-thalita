@@ -130,7 +130,7 @@
         <!-- Links de navegação -->
         <nav class="site-header__nav">
             <a href="/" @if($_currentPath === '/') class="nav-active" @endif>Início</a>
-            <a href="/#servicos">Serviços</a>
+            <a href="/#servicos">Planos de Estudo</a>
             <a href="/#catalogo">Produtos</a>
             <a href="/#depoimentos">Depoimentos</a>
             <a href="/blog" @if(str_starts_with($_currentPath, 'blog')) class="nav-active" @endif>Blog</a>
