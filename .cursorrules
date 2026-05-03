@@ -1,12 +1,1 @@
-Sempre que o usuário digitar os comandos exatos "$", "executar", "exec", "vai", "ja" ou "prompt" no chat, você deve:
-0. Executar um `git pull` para garantir que as últimas instruções do Radar (Nuvem) foram baixadas.
-1. Localizar o arquivo do prompt mais recente, que SEMPRE estará no caminho relativo `.prompts/PROMPT.md` dentro da pasta raiz atual.
-2. Ler todo o conteúdo do arquivo `PROMPT.md` (caso exista, se não existir, aborte a execução e informe ao usuário que o prompt não foi encontrado).
-3. Executar as instruções descritas nele imediatamente e apresentar o resultado, sem perguntar mais nada.
-4. Após a conclusão bem-sucedida da tarefa, você deve OBRIGATORIAMENTE ARQUIVAR o conteúdo do arquivo `PROMPT.md` para o diretório de histórico `.prompts/historico_prompts`. O novo nome do arquivo deve conter o timestamp atual (ex: `PROMPT_20240101_1200.md`).
-5. EXCLUIR o arquivo `PROMPT.md` original da pasta `.prompts` para manter o workspace limpo para a próxima sincronia.
-6. Aguardar revisão do desenvolvedor, quando ele digitar os exatos comandos "#", "commit" você DEVE realizar um commit das alterações feitas com uma mensagem de commit clara, técnica e detalhada (em português), baseada em tudo o que foi realizado.
-7. Aguardar revisão do desenvolvedor, quando ele digitar os exatos comandos "!", push" você DEVE realizar um push, se o commit não tiver sido criado você DEVE realizar um commit primeiro seguindo as instruções acima.
-COMPORTAMENTO GERAL (MUITO IMPORTANTE):
-- Você deve ler e seguir ESTRITAMENTE todas as regras globais descritas nos arquivos Markdown da pasta `.agent/rules`. 
-- Qualquer código gerado, resposta ou modificação de arquivos DEVE respeitar o Code Style, Layout Style e padrões definidos nestes arquivos.
+Leia e siga estritamente todas as instruções e regras presentes no diretório: .agent/rules/
