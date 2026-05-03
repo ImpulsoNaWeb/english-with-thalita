@@ -26,8 +26,12 @@ class Configuracao extends Model
 
     public static function get(string $chave, mixed $padrao = null): mixed
     {
-        return Cache::rememberForever("configuracao_{$chave}", function () use ($chave, $padrao) {
-            return static::where('chave', $chave)->first()?->valor ?? $padrao;
-        });
+        try {
+            return Cache::rememberForever("configuracao_{$chave}", function () use ($chave, $padrao) {
+                return static::where('chave', $chave)->first()?->valor ?? $padrao;
+            });
+        } catch (\Throwable $e) {
+            return $padrao;
+        }
     }
 }
