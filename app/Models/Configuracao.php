@@ -27,6 +27,12 @@ class Configuracao extends Model
     public static function get(string $chave, mixed $padrao = null): mixed
     {
         try {
+            // Se estiver rodando no console (como deploy/artisan) e a tabela não existir,
+            // evita quebrar o boot antes de rodar as migrations.
+            if (app()->runningInConsole() && !\Illuminate\Support\Facades\Schema::hasTable('configuracoes')) {
+                return $padrao;
+            }
+
             return Cache::rememberForever("configuracao_{$chave}", function () use ($chave, $padrao) {
                 return static::where('chave', $chave)->first()?->valor ?? $padrao;
             });

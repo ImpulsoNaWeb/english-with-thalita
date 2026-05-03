@@ -6,7 +6,9 @@ Bússola e memória do projeto.
 ### ✅ FEITO
 - [x] Repositório inicializado.
 - [x] Regras (.agent/rules) configuradas.
-- [x] index.html "Em Construção".
+- [x] Correção de erro de boot (Configuracao model).
+- [x] Setup do .env e banco de dados SQLite.
+- [x] Migrações e seeds executados.
 
 ---
 
