@@ -32,18 +32,34 @@ class ServicoResource extends Resource
             ->schema([
                 \Filament\Schemas\Components\Section::make('Informações do Serviço')
                     ->schema([
-                        Forms\Components\TextInput::make('nome')
-                            ->label('Título')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\Textarea::make('descricao')
-                            ->label('Descrição')
-                            ->required(),
+                        \Filament\Schemas\Components\Tabs::make('Idiomas')
+                            ->tabs([
+                                \Filament\Schemas\Components\Tabs\Tab::make('Português')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('nome.pt_BR')
+                                            ->label('Título (PT)')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Forms\Components\Textarea::make('descricao.pt_BR')
+                                            ->label('Descrição (PT)')
+                                            ->required(),
+                                        Forms\Components\TextInput::make('badge.pt_BR')
+                                            ->label('Badge (PT) (ex: Mais procurado)'),
+                                    ]),
+                                \Filament\Schemas\Components\Tabs\Tab::make('Inglês')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('nome.en')
+                                            ->label('Título (EN)')
+                                            ->maxLength(255),
+                                        Forms\Components\Textarea::make('descricao.en')
+                                            ->label('Descrição (EN)'),
+                                        Forms\Components\TextInput::make('badge.en')
+                                            ->label('Badge (EN)'),
+                                    ]),
+                            ]),
                         Forms\Components\TextInput::make('icone')
                             ->label('Ícone (opcional)')
                             ->placeholder('fa-solid fa-star'),
-                        Forms\Components\TextInput::make('badge')
-                            ->label('Badge (ex: Mais procurado)'),
                         Forms\Components\TextInput::make('badge_cor')
                             ->label('Cor do Badge (ex: text-brand-accent)'),
                         Forms\Components\FileUpload::make('imagem')

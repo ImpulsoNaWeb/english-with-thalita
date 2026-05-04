@@ -3,6 +3,11 @@
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('lang/{lang}', function ($lang) {
+    session(['locale' => $lang]);
+    return redirect()->back();
+})->name('lang.switch');
+
 Route::get('/', function () {
     return view('welcome');
 });

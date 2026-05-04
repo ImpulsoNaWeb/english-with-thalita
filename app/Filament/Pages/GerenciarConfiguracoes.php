@@ -33,7 +33,15 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
 
     public function mount(): void
     {
-        $this->dados = Configuracao::all()->pluck('valor', 'chave')->toArray();
+        $this->dados = [];
+        foreach (Configuracao::all() as $config) {
+            $this->dados[$config->chave] = $config->getTranslations('valor');
+            
+            // Se for um campo que não usa abas no form, pegamos o valor atual
+            if (in_array($config->chave, ['nome_site', 'cor_primaria', 'whatsapp_contato', 'contato_email', 'contato_telefone', 'social_instagram', 'social_facebook'])) {
+                $this->dados[$config->chave] = $config->valor;
+            }
+        }
         
         // Garantir que campos de arquivo sejam sempre arrays para o Filament
         foreach (['logo_site', 'favicon_site'] as $campo) {
@@ -69,39 +77,99 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                             ]),
                         Tabs\Tab::make('Hero')
                             ->schema([
-                                TextInput::make('titulo_hero')->label('Título do Hero')->default('English with Thalita'),
-                                Textarea::make('subtitulo_hero')->label('Subtítulo do Hero'),
-                                TextInput::make('texto_botao_hero')->label('Botão do Hero')->default('Quero Aprender'),
+                                Tabs::make('Idiomas Hero')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('titulo_hero.pt_BR')->label('Título do Hero (PT)')->default('English with Thalita'),
+                                                Textarea::make('subtitulo_hero.pt_BR')->label('Subtítulo do Hero (PT)'),
+                                                TextInput::make('texto_botao_hero.pt_BR')->label('Botão do Hero (PT)')->default('Quero Aprender'),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('titulo_hero.en')->label('Título do Hero (EN)'),
+                                                Textarea::make('subtitulo_hero.en')->label('Subtítulo do Hero (EN)'),
+                                                TextInput::make('texto_botao_hero.en')->label('Botão do Hero (EN)'),
+                                            ]),
+                                    ]),
                             ]),
                         Tabs\Tab::make('Sobre')
                             ->schema([
-                                TextInput::make('sobre_badge')->label('Badge')->default('Por que escolher as aulas?'),
-                                TextInput::make('sobre_titulo')->label('Título')->default('Inglês focado na sua comunicação real'),
-                                Textarea::make('sobre_descricao')->label('Descrição'),
-                                Repeater::make('diferenciais')
-                                    ->label('Diferenciais')
-                                    ->schema([
-                                        TextInput::make('titulo')->label('Título'),
-                                        Textarea::make('descricao')->label('Descrição'),
-                                        TextInput::make('icone')->label('Classe do Ícone (ex: fa-earth-americas)')->default('fa-solid fa-star'),
-                                        TextInput::make('cor')->label('Classe de Cor (ex: bg-brand-orange)')->default('bg-brand-orange'),
-                                    ])
-                                    ->columns(2)
-                                    ->defaultItems(3),
+                                Tabs::make('Idiomas Sobre')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('sobre_badge.pt_BR')->label('Badge (PT)')->default('Por que escolher as aulas?'),
+                                                TextInput::make('sobre_titulo.pt_BR')->label('Título (PT)')->default('Inglês focado na sua comunicação real'),
+                                                Textarea::make('sobre_descricao.pt_BR')->label('Descrição (PT)'),
+                                                Repeater::make('diferenciais.pt_BR')
+                                                    ->label('Diferenciais (PT)')
+                                                    ->schema([
+                                                        TextInput::make('titulo')->label('Título'),
+                                                        Textarea::make('descricao')->label('Descrição'),
+                                                        TextInput::make('icone')->label('Classe do Ícone (ex: fa-earth-americas)')->default('fa-solid fa-star'),
+                                                        TextInput::make('cor')->label('Classe de Cor (ex: bg-brand-orange)')->default('bg-brand-orange'),
+                                                    ])
+                                                    ->columns(2)
+                                                    ->defaultItems(3),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('sobre_badge.en')->label('Badge (EN)'),
+                                                TextInput::make('sobre_titulo.en')->label('Título (EN)'),
+                                                Textarea::make('sobre_descricao.en')->label('Descrição (EN)'),
+                                                Repeater::make('diferenciais.en')
+                                                    ->label('Diferenciais (EN)')
+                                                    ->schema([
+                                                        TextInput::make('titulo')->label('Título'),
+                                                        Textarea::make('descricao')->label('Descrição'),
+                                                        TextInput::make('icone')->label('Classe do Ícone (ex: fa-earth-americas)')->default('fa-solid fa-star'),
+                                                        TextInput::make('cor')->label('Classe de Cor (ex: bg-brand-orange)')->default('bg-brand-orange'),
+                                                    ])
+                                                    ->columns(2)
+                                                    ->defaultItems(3),
+                                            ]),
+                                    ]),
                             ]),
                         Tabs\Tab::make('SEO')
                             ->schema([
-                                TextInput::make('seo_titulo')->label('Título SEO'),
-                                TextInput::make('seo_descricao')->label('Descrição SEO'),
-                                TagsInput::make('seo_keywords')->label('Palavras-chave SEO'),
+                                Tabs::make('Idiomas SEO')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('seo_titulo.pt_BR')->label('Título SEO (PT)'),
+                                                TextInput::make('seo_descricao.pt_BR')->label('Descrição SEO (PT)'),
+                                                TagsInput::make('seo_keywords.pt_BR')->label('Palavras-chave SEO (PT)'),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('seo_titulo.en')->label('Título SEO (EN)'),
+                                                TextInput::make('seo_descricao.en')->label('Descrição SEO (EN)'),
+                                                TagsInput::make('seo_keywords.en')->label('Palavras-chave SEO (EN)'),
+                                            ]),
+                                    ]),
                             ]),
                         Tabs\Tab::make('Contato')
                             ->schema([
-                                TextInput::make('contato_titulo')->label('Título do Bloco'),
-                                Textarea::make('contato_descricao')->label('Descrição do Bloco'),
-                                TextInput::make('contato_caixa_titulo')->label('Título da Caixa Interna'),
-                                Textarea::make('contato_caixa_descricao')->label('Descrição da Caixa Interna'),
-                                TextInput::make('contato_botao')->label('Texto do Botão'),
+                                Tabs::make('Idiomas Contato')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('contato_titulo.pt_BR')->label('Título do Bloco (PT)'),
+                                                Textarea::make('contato_descricao.pt_BR')->label('Descrição do Bloco (PT)'),
+                                                TextInput::make('contato_caixa_titulo.pt_BR')->label('Título da Caixa Interna (PT)'),
+                                                Textarea::make('contato_caixa_descricao.pt_BR')->label('Descrição da Caixa Interna (PT)'),
+                                                TextInput::make('contato_botao.pt_BR')->label('Texto do Botão (PT)'),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('contato_titulo.en')->label('Título do Bloco (EN)'),
+                                                Textarea::make('contato_descricao.en')->label('Descrição do Bloco (EN)'),
+                                                TextInput::make('contato_caixa_titulo.en')->label('Título da Caixa Interna (EN)'),
+                                                Textarea::make('contato_caixa_descricao.en')->label('Descrição da Caixa Interna (EN)'),
+                                                TextInput::make('contato_botao.en')->label('Texto do Botão (EN)'),
+                                            ]),
+                                    ]),
                                 TextInput::make('whatsapp_contato')->label('WhatsApp'),
                                 TextInput::make('contato_email')->label('E-mail'),
                                 TextInput::make('contato_telefone')->label('Telefone'),

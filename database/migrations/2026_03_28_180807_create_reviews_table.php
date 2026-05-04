@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('depoimentos', function (Blueprint $table) {
             $table->id();
             $table->string('nome_autor');
-            $table->string('cargo_autor')->nullable();
+            $table->json('cargo_autor')->nullable();
             $table->string('avatar_autor')->nullable();
-            $table->text('conteudo');
+            $table->json('conteudo');
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->string('seo_image')->nullable();

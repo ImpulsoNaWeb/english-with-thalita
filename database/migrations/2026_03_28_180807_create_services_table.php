@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->text('descricao')->nullable();
+            $table->json('nome');
+            $table->json('descricao')->nullable();
             $table->string('icone')->nullable();
-            $table->string('badge')->nullable();
+            $table->json('badge')->nullable();
             $table->string('badge_cor')->nullable();
             $table->string('imagem')->nullable();
             $table->string('seo_title')->nullable();

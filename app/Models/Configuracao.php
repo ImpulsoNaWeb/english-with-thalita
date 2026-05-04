@@ -7,10 +7,14 @@ use App\Observers\ConfiguracaoObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Spatie\Translatable\HasTranslations;
 
 #[ObservedBy([ConfiguracaoObserver::class])]
 class Configuracao extends Model
 {
+    use HasTranslations;
+
+    public $translatable = ['valor'];
     const CREATED_AT = 'criado_em';
     const UPDATED_AT = 'atualizado_em';
     protected $table = 'configuracoes';
@@ -19,9 +23,7 @@ class Configuracao extends Model
 
     protected function casts(): array
     {
-        return [
-            'valor' => ConfiguracaoValorCast::class,
-        ];
+        return [];
     }
 
     public static function get(string $chave, mixed $padrao = null): mixed
@@ -33,7 +35,8 @@ class Configuracao extends Model
                 return $padrao;
             }
 
-            return Cache::rememberForever("configuracao_{$chave}", function () use ($chave, $padrao) {
+            $locale = app()->getLocale();
+            return Cache::rememberForever("configuracao_{$chave}_{$locale}", function () use ($chave, $padrao) {
                 return static::where('chave', $chave)->first()?->valor ?? $padrao;
             });
         } catch (\Throwable $e) {

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('configuracoes', function (Blueprint $col) {
             $col->id();
             $col->string('chave')->unique();
-            $col->text('valor')->nullable();
+            $col->json('valor')->nullable();
             $col->string('tipo')->default('text');
             $col->string('grupo')->default('geral');
             $col->timestamp('criado_em')->nullable();

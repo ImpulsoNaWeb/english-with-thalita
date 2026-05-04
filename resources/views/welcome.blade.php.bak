@@ -5,52 +5,6 @@
     
     $servicos = \App\Models\Servico::where('esta_ativo', true)->orderBy('ordem')->get();
     $depoimentos = \App\Models\Depoimento::where('esta_ativo', true)->get();
-
-    $dbTranslations = ['pt' => [], 'en' => []];
-    foreach($c as $key => $model) {
-        if ($key === 'titulo_hero') {
-            $dbTranslations['pt']['c_' . $key] = nl2br(e($model->getTranslation('valor', 'pt_BR') ?? "English\\nwith\\nThalita"));
-            $dbTranslations['en']['c_' . $key] = nl2br(e($model->getTranslation('valor', 'en') ?? "English\\nwith\\nThalita"));
-        } else {
-            $dbTranslations['pt']['c_' . $key] = $model->getTranslation('valor', 'pt_BR') ?? '';
-            $dbTranslations['en']['c_' . $key] = $model->getTranslation('valor', 'en') ?? '';
-        }
-    }
-    
-    if ($c->has('diferenciais')) {
-        $val_pt = $c['diferenciais']->getTranslation('valor', 'pt_BR') ?? '[]';
-        $difs_pt = is_string($val_pt) ? json_decode($val_pt, true) : $val_pt;
-        if (!is_array($difs_pt)) $difs_pt = [];
-
-        $val_en = $c['diferenciais']->getTranslation('valor', 'en') ?? '[]';
-        $difs_en = is_string($val_en) ? json_decode($val_en, true) : $val_en;
-        if (!is_array($difs_en)) $difs_en = [];
-
-        foreach($diferenciais as $index => $dif) {
-            $dbTranslations['pt']['dif_titulo_' . $index] = $difs_pt[$index]['titulo'] ?? '';
-            $dbTranslations['en']['dif_titulo_' . $index] = $difs_en[$index]['titulo'] ?? '';
-            $dbTranslations['pt']['dif_desc_' . $index] = $difs_pt[$index]['descricao'] ?? '';
-            $dbTranslations['en']['dif_desc_' . $index] = $difs_en[$index]['descricao'] ?? '';
-        }
-    }
-
-    foreach($servicos as $index => $servico) {
-        $dbTranslations['pt']['serv_titulo_' . $index] = $servico->getTranslation('nome', 'pt_BR') ?? '';
-        $dbTranslations['en']['serv_titulo_' . $index] = $servico->getTranslation('nome', 'en') ?? '';
-        $dbTranslations['pt']['serv_desc_' . $index] = $servico->getTranslation('descricao', 'pt_BR') ?? '';
-        $dbTranslations['en']['serv_desc_' . $index] = $servico->getTranslation('descricao', 'en') ?? '';
-        $dbTranslations['pt']['serv_badge_' . $index] = $servico->getTranslation('badge', 'pt_BR') ?? '';
-        $dbTranslations['en']['serv_badge_' . $index] = $servico->getTranslation('badge', 'en') ?? '';
-    }
-
-    foreach($depoimentos as $index => $depo) {
-        $dbTranslations['pt']['depo_nome_' . $index] = $depo->nome_autor;
-        $dbTranslations['en']['depo_nome_' . $index] = $depo->nome_autor;
-        $dbTranslations['pt']['depo_cargo_' . $index] = $depo->getTranslation('cargo_autor', 'pt_BR') ?? '';
-        $dbTranslations['en']['depo_cargo_' . $index] = $depo->getTranslation('cargo_autor', 'en') ?? '';
-        $dbTranslations['pt']['depo_conteudo_' . $index] = '"' . ($depo->getTranslation('conteudo', 'pt_BR') ?? '') . '"';
-        $dbTranslations['en']['depo_conteudo_' . $index] = '"' . ($depo->getTranslation('conteudo', 'en') ?? '') . '"';
-    }
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
@@ -59,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">{{ $c['seo_titulo']->valor ?? 'English with Thalita' }}</title>
-    <meta name="description" data-i18n="c_seo_descricao" content="{{ $c['seo_descricao']->valor ?? 'Professora de inglês para quem quer se comunicar com confiança e fluência real.' }}">
+    <meta name="description" content="{{ $c['seo_descricao']->valor ?? 'Professora de inglês para quem quer se comunicar com confiança e fluência real.' }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -152,7 +106,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#"
                         class="text-2xl font-black tracking-tighter text-brand-dark hover:text-brand-accent transition-colors">
-                        <span data-i18n="c_nome_site">{{ $c['nome_site']->valor ?? 'English with Thalita' }}</span>
+                        {{ $c['nome_site']->valor ?? 'English with Thalita' }}
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-8">
@@ -220,13 +174,13 @@
                     <!-- Retro Title Card -->
                     <div
                         class="bg-brand-card border-[3px] border-brand-dark rounded-3xl shadow-retro-lg py-8 px-10 md:py-12 md:px-16 inline-block mb-10 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                        <h1 data-i18n="c_titulo_hero"
+                        <h1
                             class="text-5xl md:text-7xl lg:text-[80px] font-black text-brand-dark leading-[1.1] tracking-tight">
                             {!! nl2br(e($c['titulo_hero']->valor ?? "English\nwith\nThalita")) !!}
                         </h1>
                     </div>
 
-                    <p data-i18n="c_subtitulo_hero"
+                    <p data-i18n="hero_subtitle"
                         class="text-2xl md:text-3xl font-bold text-brand-dark mb-10 leading-snug">
                         {{ $c['subtitulo_hero']->valor ?? 'Professora de inglês para quem quer se comunicar com confiança e fluência real' }}
                     </p>
@@ -235,7 +189,7 @@
                         <a href="#contato"
                             class="whitespace-nowrap bg-[#25D366] text-brand-dark font-black py-4 px-8 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl flex items-center justify-center gap-3">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
-                            <span data-i18n="c_texto_botao_hero">{{ $c['texto_botao_hero']->valor ?? 'Quero Aprender' }}</span>
+                            <span data-i18n="hero_cta">{{ $c['texto_botao_hero']->valor ?? 'Quero Aprender' }}</span>
                         </a>
                         <span
                             class="whitespace-nowrap font-bold text-brand-dark text-base flex items-center gap-2 cursor-default animate-bounce"
@@ -262,22 +216,22 @@
 
                     <div
                         class="order-1 lg:order-2 bg-brand-cardLight border-[3px] border-brand-dark rounded-3xl shadow-retro-lg p-8 md:p-12 relative z-10">
-                        <span data-i18n="c_sobre_badge"
+                        <span data-i18n="sobre_badge"
                             class="inline-block bg-brand-alert text-brand-dark font-black text-sm uppercase tracking-widest py-1 px-3 border-2 border-brand-dark rounded-full mb-6 transform -rotate-2">
                             {{ $c['sobre_badge']->valor ?? 'Por que escolher as aulas?' }}
                         </span>
 
-                        <h2 data-i18n="c_sobre_titulo"
+                        <h2 data-i18n="sobre_title"
                             class="text-3xl md:text-4xl font-black text-brand-dark mb-6 leading-tight">
                             {{ $c['sobre_titulo']->valor ?? 'Inglês focado na sua comunicação real' }}
                         </h2>
 
-                        <p data-i18n="c_sobre_descricao" class="text-brand-dark/80 text-lg mb-8 font-medium">
+                        <p data-i18n="sobre_desc" class="text-brand-dark/80 text-lg mb-8 font-medium">
                             {{ $c['sobre_descricao']->valor ?? 'Diga adeus aos métodos engessados. Minhas aulas são desenvolvidas para destravar a sua fala, focando exatamente nos seus objetivos de curto e longo prazo. Seja para o mercado de trabalho, viagens ou certificações internacionais.' }}
                         </p>
 
                         <div class="space-y-6">
-                            @foreach($diferenciais as $index => $dif)
+                            @foreach($diferenciais as $dif)
                             <div class="flex gap-4 items-start">
                                 <div
                                     class="flex-shrink-0 w-12 h-12 rounded-xl {{ $dif['cor'] ?? 'bg-brand-orange' }} border-2 border-brand-dark shadow-retro-sm flex items-center justify-center text-white mt-1">
@@ -285,8 +239,8 @@
                                 </div>
                                 <div>
                                     <h3 class="text-brand-dark font-black text-xl mb-1">
-                                        <span data-i18n="dif_titulo_{{ $index }}">{{ $dif['titulo'] }}</span></h3>
-                                    <p class="text-brand-dark/70 font-medium"><span data-i18n="dif_desc_{{ $index }}">{{ $dif['descricao'] }}</span></p>
+                                        {{ $dif['titulo'] }}</h3>
+                                    <p class="text-brand-dark/70 font-medium">{{ $dif['descricao'] }}</p>
                                 </div>
                             </div>
                             @endforeach
@@ -312,7 +266,7 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-8 relative z-10">
-                    @foreach($servicos as $index => $servico)
+                    @foreach($servicos as $servico)
                     <div
                         class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] md:min-h-[600px] bg-brand-cardLight border-[3px] border-brand-dark rounded-3xl shadow-retro-lg overflow-hidden flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300 relative">
                         @if($servico->imagem)
@@ -329,16 +283,16 @@
                             @if($servico->badge)
                             <div
                                 class="inline-block {{ $servico->badge_cor ?? 'bg-brand-alert text-brand-dark' }} text-xs font-black px-3 py-1 border-2 border-brand-dark rounded-full mb-4 self-start transform -rotate-2">
-                                <i class="{{ $servico->icone ?? 'fa-solid fa-star' }} mr-1"></i> <span data-i18n="serv_badge_{{ $index }}">{{ $servico->badge }}</span>
+                                <i class="{{ $servico->icone ?? 'fa-solid fa-star' }} mr-1"></i> <span>{{ $servico->badge }}</span>
                             </div>
                             @endif
-                            <h3 class="text-2xl font-black text-brand-dark mb-3"><span data-i18n="serv_titulo_{{ $index }}">{{ $servico->nome }}</span></h3>
+                            <h3 class="text-2xl font-black text-brand-dark mb-3">{{ $servico->nome }}</h3>
                             <p class="text-brand-dark/80 font-medium mb-8 flex-grow">
-                                <span data-i18n="serv_desc_{{ $index }}">{{ $servico->descricao }}</span>
+                                {{ $servico->descricao }}
                             </p>
                             <a href="#contato"
                                 class="w-full block text-center bg-brand-dark text-brand-bg font-black py-3 px-4 rounded-xl border-2 border-brand-dark hover:bg-brand-card hover:text-brand-dark transition-colors shadow-retro-sm">
-                                <span data-i18n="card_btn">Consultar Valores</span>
+                                Consultar Valores
                             </a>
                         </div>
                     </div>
@@ -384,8 +338,8 @@
                             </div>
                             @endif
                             <div>
-                                <h4 class="font-black text-brand-dark text-lg"><span data-i18n="depo_nome_{{ $index }}">{{ $depo->nome_autor }}</span></h4>
-                                <p class="text-brand-dark/70 text-sm font-bold"><span data-i18n="depo_cargo_{{ $index }}">{{ $depo->cargo_autor }}</span></p>
+                                <h4 class="font-black text-brand-dark text-lg">{{ $depo->nome_autor }}</h4>
+                                <p class="text-brand-dark/70 text-sm font-bold">{{ $depo->cargo_autor }}</p>
                             </div>
                         </div>
                         <div class="flex text-brand-alert mb-4 text-sm">
@@ -393,7 +347,7 @@
                             <i class="fa-solid fa-star"></i>
                             @endfor
                         </div>
-                        <p class="text-brand-dark font-medium italic"><span data-i18n="depo_conteudo_{{ $index }}">"{{ $depo->conteudo }}"</span></p>
+                        <p class="text-brand-dark font-medium italic">"{{ $depo->conteudo }}"</p>
                     </div>
                     @endforeach
                 </div>
@@ -415,12 +369,12 @@
                     </div>
 
                     <div class="relative z-10">
-                        <h2 data-i18n="c_contato_titulo"
+                        <h2 data-i18n="contato_title"
                             class="text-4xl md:text-5xl font-black text-white mb-6 leading-tight drop-shadow-[2px_2px_0_rgba(73,75,70,1)]">
-                            {{ $c['contato_titulo']->valor ?? 'Pronto para dar o próximo passo no seu inglês?' }}
+                            {{ $c['contato_titulo'] ?? 'Pronto para dar o próximo passo no seu inglês?' }}
                         </h2>
-                        <p data-i18n="c_contato_descricao" class="text-xl text-brand-bg font-bold mb-10 max-w-2xl mx-auto">
-                            {{ $c['contato_descricao']->valor ?? 'Não deixe para amanhã a fluência que você pode começar a construir hoje. Entre em contato pelo WhatsApp e vamos montar o seu plano.' }}
+                        <p data-i18n="contato_desc" class="text-xl text-brand-bg font-bold mb-10 max-w-2xl mx-auto">
+                            {{ $c['contato_descricao'] ?? 'Não deixe para amanhã a fluência que você pode começar a construir hoje. Entre em contato pelo WhatsApp e vamos montar o seu plano.' }}
                         </p>
 
                         <div
@@ -430,14 +384,14 @@
                                 <i class="fa-brands fa-whatsapp"></i>
                             </div>
 
-                            <h3 data-i18n="c_contato_caixa_titulo" class="text-2xl font-black text-brand-dark mb-2 mt-6">{{ $c['contato_caixa_titulo']->valor ?? 'Fale Comigo' }}</h3>
-                            <p data-i18n="c_contato_caixa_descricao" class="text-brand-dark/80 font-medium mb-8">{{ $c['contato_caixa_descricao']->valor ?? 'Tire dúvidas, verifique disponibilidade de horários e receba os valores atualizados.' }}</p>
+                            <h3 data-i18n="contato_box_title" class="text-2xl font-black text-brand-dark mb-2 mt-6">{{ $c['contato_caixa_titulo']->valor ?? 'Fale Comigo' }}</h3>
+                            <p data-i18n="contato_box_desc" class="text-brand-dark/80 font-medium mb-8">{{ $c['contato_caixa_descricao']->valor ?? 'Tire dúvidas, verifique disponibilidade de horários e receba os valores atualizados.' }}</p>
 
-                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $c['whatsapp_contato']->valor ?? '5519997799589') }}?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20de%20inglês!"
+                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $c['whatsapp_contato'] ?? '5519997799589') }}?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20de%20inglês!"
                                 target="_blank" rel="noopener noreferrer"
                                 class="block w-full bg-[#25D366] text-brand-dark font-black py-4 px-6 rounded-xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all active:scale-95 text-lg flex items-center justify-center gap-3">
                                 <i class="fa-brands fa-whatsapp text-2xl"></i>
-                                <span data-i18n="c_contato_botao">{{ $c['contato_botao']->valor ?? 'Iniciar Conversa' }}</span>
+                                <span data-i18n="contato_btn">{{ $c['contato_botao'] ?? 'Iniciar Conversa' }}</span>
                             </a>
                         </div>
                     </div>
@@ -560,7 +514,7 @@
         const langIndicatorEn = document.getElementById('lang-indicator-en');
 
         // Apenas textos estáticos que não estão no banco
-        const staticTranslations = {
+        const translations = {
             'pt': {
                 'nav_sobre': 'Sobre',
                 'nav_planos': 'Planos de Aula',
@@ -613,12 +567,6 @@
             }
         };
 
-        const dbTranslations = {!! json_encode($dbTranslations) !!};
-        const translations = {
-            'pt': { ...staticTranslations['pt'], ...dbTranslations['pt'] },
-            'en': { ...staticTranslations['en'], ...dbTranslations['en'] }
-        };
-
         function updateLanguageUI() {
             if (currentLang === 'pt') {
                 langIndicatorPt.classList.add('text-brand-accent');
@@ -635,13 +583,7 @@
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (translations[currentLang] && translations[currentLang][key]) {
-                    if (element.tagName === 'META') {
-                        element.setAttribute('content', translations[currentLang][key]);
-                    } else if (element.tagName === 'TITLE') {
-                        element.innerText = translations[currentLang][key];
-                    } else {
-                        element.innerHTML = translations[currentLang][key];
-                    }
+                    element.innerHTML = translations[currentLang][key];
                 }
             });
             
@@ -655,13 +597,7 @@
             langToggleBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 let newLang = currentLang === 'pt' ? 'en' : 'pt_BR';
-                
-                // Fetch in background to set session
-                fetch('/lang/' + newLang).catch(err => console.error(err));
-                
-                // Update UI without reload
-                currentLang = newLang === 'en' ? 'en' : 'pt';
-                updateLanguageUI();
+                window.location.href = '/lang/' + newLang;
             });
         }
     </script>

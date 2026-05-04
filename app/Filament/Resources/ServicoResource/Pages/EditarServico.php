@@ -16,4 +16,13 @@ class EditarServico extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        foreach ($this->record->getTranslatableAttributes() as $attribute) {
+            $data[$attribute] = $this->record->getTranslations($attribute);
+        }
+ 
+        return $data;
+    }
 }

@@ -35,11 +35,24 @@ class DepoimentoResource extends Resource
                         Forms\Components\TextInput::make('nome_autor')
                             ->label('Nome do Autor')
                             ->required(),
-                        Forms\Components\TextInput::make('cargo_autor')
-                            ->label('Cargo/Empresa'),
-                        Forms\Components\Textarea::make('conteudo')
-                            ->label('Comentário')
-                            ->required(),
+                        \Filament\Schemas\Components\Tabs::make('Idiomas')
+                            ->tabs([
+                                \Filament\Schemas\Components\Tabs\Tab::make('Português')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('cargo_autor.pt_BR')
+                                            ->label('Cargo/Empresa (PT)'),
+                                        Forms\Components\Textarea::make('conteudo.pt_BR')
+                                            ->label('Comentário (PT)')
+                                            ->required(),
+                                    ]),
+                                \Filament\Schemas\Components\Tabs\Tab::make('Inglês')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('cargo_autor.en')
+                                            ->label('Cargo/Empresa (EN)'),
+                                        Forms\Components\Textarea::make('conteudo.en')
+                                            ->label('Comentário (EN)'),
+                                    ]),
+                            ]),
                         Forms\Components\Select::make('nota')
                             ->label('Avaliação')
                             ->options([
