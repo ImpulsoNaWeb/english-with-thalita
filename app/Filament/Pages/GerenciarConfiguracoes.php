@@ -38,7 +38,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
             $this->dados[$config->chave] = $config->getTranslations('valor');
             
             // Se for um campo que não usa abas no form, pegamos o valor atual
-            if (in_array($config->chave, ['nome_site', 'cor_primaria', 'whatsapp_contato', 'contato_email', 'contato_telefone', 'social_instagram', 'social_facebook'])) {
+            if (in_array($config->chave, ['nome_site', 'cor_primaria', 'whatsapp_contato', 'contato_email', 'contato_telefone', 'social_instagram', 'social_facebook', 'logo_site', 'favicon_site'])) {
                 $this->dados[$config->chave] = $config->valor;
             }
         }

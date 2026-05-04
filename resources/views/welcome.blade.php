@@ -60,6 +60,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">{{ $c['seo_titulo']->valor ?? 'English with Thalita' }}</title>
     <meta name="description" data-i18n="c_seo_descricao" content="{{ $c['seo_descricao']->valor ?? 'Professora de inglês para quem quer se comunicar com confiança e fluência real.' }}">
+    
+    @if($c->has('favicon_site') && $c['favicon_site']->valor)
+        <link rel="icon" type="image/x-icon" href="{{ asset('storage/' . (is_array($c['favicon_site']->valor) ? $c['favicon_site']->valor[0] : $c['favicon_site']->valor)) }}">
+    @endif
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -152,7 +156,16 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#"
                         class="text-2xl font-black tracking-tighter text-brand-dark hover:text-brand-accent transition-colors">
-                        <span data-i18n="c_nome_site">{{ $c['nome_site']->valor ?? 'English with Thalita' }}</span>
+                        @php
+                            $logoPath = $c->has('logo_site') ? $c['logo_site']->valor : null;
+                            if (is_array($logoPath)) $logoPath = $logoPath[0] ?? null;
+                        @endphp
+
+                        @if($logoPath)
+                            <img src="{{ asset('storage/' . $logoPath) }}" alt="{{ $c['nome_site']->valor ?? 'Logo' }}" class="h-10 w-auto">
+                        @else
+                            <span data-i18n="c_nome_site">{{ $c['nome_site']->valor ?? 'English with Thalita' }}</span>
+                        @endif
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-8">
@@ -167,12 +180,11 @@
                         class="text-sm font-bold text-brand-dark hover:text-brand-accent transition-colors">Contato</a>
                 </nav>
                 <div class="hidden md:flex items-center gap-4">
-                    <button id="lang-toggle"
-                        class="font-bold text-brand-dark bg-brand-bg py-2 px-3 rounded-xl border-2 border-brand-dark shadow-retro-sm hover:bg-brand-card transition-all active:scale-95 flex items-center gap-1 text-xs uppercase tracking-wider cursor-pointer"
+                    <button class="lang-toggle font-bold text-brand-dark bg-brand-bg py-2 px-3 rounded-xl border-2 border-brand-dark shadow-retro-sm hover:bg-brand-card transition-all active:scale-95 flex items-center gap-1 text-xs uppercase tracking-wider cursor-pointer"
                         aria-label="Mudar idioma">
-                        <span id="lang-indicator-pt" class="text-brand-accent pointer-events-none">PT</span>
+                        <span class="lang-indicator-pt text-brand-accent pointer-events-none">PT</span>
                         <span class="text-brand-dark/30 mx-1 pointer-events-none">/</span>
-                        <span id="lang-indicator-en" class="text-brand-dark/50 pointer-events-none">EN</span>
+                        <span class="lang-indicator-en text-brand-dark/50 pointer-events-none">EN</span>
                     </button>
                     <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $c['whatsapp_contato']->valor ?? '5519997799589') }}?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20aula!" target="_blank" rel="noopener noreferrer"
                         class="bg-brand-accent text-white font-black py-2.5 px-6 rounded-xl border-2 border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all active:scale-95 flex items-center gap-2">
@@ -181,7 +193,13 @@
                     </a>
                 </div>
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+                <div class="md:hidden flex items-center gap-3">
+                    <button class="lang-toggle font-bold text-brand-dark bg-brand-bg py-1.5 px-2 rounded-lg border-2 border-brand-dark shadow-retro-sm hover:bg-brand-card transition-all active:scale-95 flex items-center gap-1 text-[10px] uppercase tracking-wider cursor-pointer"
+                        aria-label="Mudar idioma">
+                        <span class="lang-indicator-pt text-brand-accent pointer-events-none">PT</span>
+                        <span class="text-brand-dark/30 pointer-events-none">/</span>
+                        <span class="lang-indicator-en text-brand-dark/50 pointer-events-none">EN</span>
+                    </button>
                     <button id="mobile-menu-btn"
                         class="text-brand-dark hover:text-brand-accent focus:outline-none p-2 border-2 border-brand-dark rounded-lg shadow-retro-sm">
                         <i class="fa-solid fa-bars text-2xl"></i>
@@ -529,35 +547,41 @@
     <!-- Interactive Scripts -->
     <script>
         // Menu Mobile Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+
+            // Close mobile menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // Header Scroll Effect
         const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                header.style.background = 'rgba(242, 235, 205, 0.98)';
-                header.classList.add('shadow-retro-sm');
-            } else {
-                header.style.background = 'rgba(242, 235, 205, 0.95)';
-            }
-        });
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    header.style.background = 'rgba(242, 235, 205, 0.98)';
+                    header.classList.add('shadow-retro-sm');
+                } else {
+                    header.style.background = 'rgba(242, 235, 205, 0.95)';
+                    header.classList.remove('shadow-retro-sm');
+                }
+            });
+        }
 
-        let currentLang = '{{ app()->getLocale() === "en" ? "en" : "pt" }}';
-        const langToggleBtn = document.getElementById('lang-toggle');
-        const langIndicatorPt = document.getElementById('lang-indicator-pt');
-        const langIndicatorEn = document.getElementById('lang-indicator-en');
+        // Tradução Dinâmica
+        let currentLang = '{{ app()->getLocale() === 'en' ? 'en' : 'pt' }}';
+        const langIndicatorsPt = document.querySelectorAll('.lang-indicator-pt');
+        const langIndicatorsEn = document.querySelectorAll('.lang-indicator-en');
+        const langToggles = document.querySelectorAll('.lang-toggle');
 
         // Apenas textos estáticos que não estão no banco
         const staticTranslations = {
@@ -621,15 +645,23 @@
 
         function updateLanguageUI() {
             if (currentLang === 'pt') {
-                langIndicatorPt.classList.add('text-brand-accent');
-                langIndicatorPt.classList.remove('text-brand-dark/50');
-                langIndicatorEn.classList.add('text-brand-dark/50');
-                langIndicatorEn.classList.remove('text-brand-accent');
+                langIndicatorsPt.forEach(el => {
+                    el.classList.add('text-brand-accent');
+                    el.classList.remove('text-brand-dark/50');
+                });
+                langIndicatorsEn.forEach(el => {
+                    el.classList.add('text-brand-dark/50');
+                    el.classList.remove('text-brand-accent');
+                });
             } else {
-                langIndicatorEn.classList.add('text-brand-accent');
-                langIndicatorEn.classList.remove('text-brand-dark/50');
-                langIndicatorPt.classList.add('text-brand-dark/50');
-                langIndicatorPt.classList.remove('text-brand-accent');
+                langIndicatorsEn.forEach(el => {
+                    el.classList.add('text-brand-accent');
+                    el.classList.remove('text-brand-dark/50');
+                });
+                langIndicatorsPt.forEach(el => {
+                    el.classList.add('text-brand-dark/50');
+                    el.classList.remove('text-brand-accent');
+                });
             }
 
             document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -651,8 +683,8 @@
         // Aplica tradução estática inicial
         updateLanguageUI();
 
-        if (langToggleBtn) {
-            langToggleBtn.addEventListener('click', (e) => {
+        langToggles.forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 let newLang = currentLang === 'pt' ? 'en' : 'pt_BR';
                 
@@ -663,7 +695,7 @@
                 currentLang = newLang === 'en' ? 'en' : 'pt';
                 updateLanguageUI();
             });
-        }
+        });
     </script>
 </body>
 
