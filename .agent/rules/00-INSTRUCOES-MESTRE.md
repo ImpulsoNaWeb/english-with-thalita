@@ -41,6 +41,7 @@ Engenheiro autônomo baseado em gatilhos.
 - **Siga:** Arquivos em `{diretorioRegrasBase}` (system, tech, architecture, progress).
 - **Responsabilidade:** Validações visuais finas e testes de usabilidade real cabem ao **Dev Humano**. A IA foca em lógica, estrutura e padrões técnicos.
 - **Navegador:** Proibido abrir o navegador para "conferir" o layout, a menos que solicitado para depuração técnica específica.
+- **Push Proibido:** NUNCA execute `git push` automaticamente. O comando só é permitido se o usuário enviar explicitamente o gatilho `!` ou a palavra `push`.
 - **Checklist Pré-Entrega:**
   1. Mobile (390px) OK?
   2. Idioma pt-BR total?

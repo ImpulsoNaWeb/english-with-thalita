@@ -9,6 +9,7 @@ Inteligência central. Stack em `tech_stack.md`.
 
 ### 💡 PROTOCOLO DE INCERTEZA
 - **Pare e Pergunte:** Se ambíguo ou faltar dados (logo, cores, credenciais), NÃO invente. Peça esclarecimentos.
+- **Push Bloqueado:** Proibido executar `git push` automaticamente. Requer gatilho direto (`!` ou `push`).
 
 ### ✍️ MARKETING
 - **Tom:** Profissional, Autoritário, focado em Conversão.
