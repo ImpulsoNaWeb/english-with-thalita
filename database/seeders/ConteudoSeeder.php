@@ -185,7 +185,7 @@ class ConteudoSeeder extends Seeder
             ],
             'badge' => ['pt_BR' => 'Mais procurado', 'en' => 'Most popular'],
             'badge_cor' => 'bg-brand-alert',
-            'imagem' => 'seed/servico_conversacao.png',
+            'imagem' => 'seed/servico_conversacao_v2.png',
             'ordem' => 1,
             'esta_ativo' => true,
         ]);
@@ -198,7 +198,7 @@ class ConteudoSeeder extends Seeder
             ],
             'badge' => ['pt_BR' => 'Carreira', 'en' => 'Career'],
             'badge_cor' => 'bg-brand-orange text-white',
-            'imagem' => 'seed/servico_business.png',
+            'imagem' => 'seed/servico_business_v2.png',
             'ordem' => 2,
             'esta_ativo' => true,
         ]);
@@ -211,7 +211,7 @@ class ConteudoSeeder extends Seeder
             ],
             'badge' => ['pt_BR' => 'Foco Prático', 'en' => 'Practical Focus'],
             'badge_cor' => 'bg-[#7ca7f4]',
-            'imagem' => 'seed/servico_viagens.png',
+            'imagem' => 'seed/servico_viagens_v2.png',
             'ordem' => 3,
             'esta_ativo' => true,
         ]);
@@ -224,7 +224,7 @@ class ConteudoSeeder extends Seeder
             ],
             'badge' => ['pt_BR' => 'VIP', 'en' => 'VIP'],
             'badge_cor' => 'bg-brand-red text-white',
-            'imagem' => 'seed/servico_cidade.png',
+            'imagem' => 'seed/servico_cidade_v2.png',
             'ordem' => 4,
             'esta_ativo' => true,
         ]);
@@ -237,7 +237,7 @@ class ConteudoSeeder extends Seeder
             ],
             'badge' => ['pt_BR' => 'Corporativo', 'en' => 'Corporate'],
             'badge_cor' => 'bg-brand-accent text-white',
-            'imagem' => 'seed/servico_empresas.png',
+            'imagem' => 'seed/servico_empresas_v2.png',
             'ordem' => 5,
             'esta_ativo' => true,
         ]);
@@ -251,7 +251,7 @@ class ConteudoSeeder extends Seeder
                     'pt_BR' => '"Eu travava completamente na hora de falar. Em poucos meses com a Thalita, perdi o medo e consegui a pontuação que precisava no TOEFL para meu intercâmbio!"',
                     'en' => '"I completely froze when speaking. In just a few months with Thalita, I lost the fear and got the TOEFL score I needed for my exchange!"'
                 ],
-                'avatar' => 'seed/depo_mariana.png'
+                'avatar' => 'seed/depo_mariana_v2.png'
             ],
             [
                 'nome' => 'Carlos Eduardo, 34',
@@ -260,7 +260,7 @@ class ConteudoSeeder extends Seeder
                     'pt_BR' => '"As aulas focadas em Business English mudaram minha carreira. Hoje conduzo reuniões com a equipe gringa sem suar frio. Metodologia muito prática e direto ao ponto."',
                     'en' => '"Business English focused classes changed my career. Today I lead meetings with the international team without breaking a sweat. Very practical and straight-to-the-point methodology."'
                 ],
-                'avatar' => 'seed/depo_carlos.png'
+                'avatar' => 'seed/depo_carlos_v2.png'
             ],
             [
                 'nome' => 'Fernanda Costa, 45',
@@ -269,7 +269,7 @@ class ConteudoSeeder extends Seeder
                     'pt_BR' => '"Sempre achei que estava velha para aprender inglês do zero. A Thalita teve tanta paciência e montou um material tão voltado para minhas viagens que hoje me viro super bem sozinha."',
                     'en' => '"I always thought I was too old to learn English from scratch. Thalita had so much patience and put together material so focused on my travels that today I manage very well on my own."'
                 ],
-                'avatar' => 'seed/depo_fernanda.png'
+                'avatar' => 'seed/depo_fernanda_v2.png'
             ],
             [
                 'nome' => 'Amanda Reis, 28',
@@ -278,7 +278,7 @@ class ConteudoSeeder extends Seeder
                     'pt_BR' => '"O foco em comunicação real faz toda a diferença. Eu sabia gramática mas não falava. Em poucas aulas já estava me expressando muito melhor do que anos em cursinho."',
                     'en' => '"The focus on real communication makes all the difference. I knew grammar but didn\'t speak. In just a few classes, I was already expressing myself much better than years in a language school."'
                 ],
-                'avatar' => 'seed/depo_amanda.png'
+                'avatar' => 'seed/depo_amanda_v2.png'
             ],
             [
                 'nome' => 'Roberto Alves, 52',
@@ -287,7 +287,7 @@ class ConteudoSeeder extends Seeder
                     'pt_BR' => '"Precisava melhorar o inglês para uma promoção. A flexibilidade de horários e as aulas personalizadas foram essenciais para conciliar com minha rotina corrida."',
                     'en' => '"I needed to improve my English for a promotion. The flexible schedule and personalized classes were essential to balance with my busy routine."'
                 ],
-                'avatar' => 'seed/depo_roberto.png'
+                'avatar' => 'seed/depo_roberto_v2.png'
             ],
             [
                 'nome' => 'Lucas Mendes, 18',
@@ -296,7 +296,7 @@ class ConteudoSeeder extends Seeder
                     'pt_BR' => '"As aulas não são chatas como na escola. Falamos de assuntos atuais e práticos. Sinto que estou aprendendo o inglês que realmente se usa no dia a dia e na internet."',
                     'en' => '"Classes aren\'t boring like in school. We talk about current and practical topics. I feel like I\'m learning the English that\'s actually used in daily life and on the internet."'
                 ],
-                'avatar' => 'seed/depo_lucas.png'
+                'avatar' => 'seed/depo_lucas_v2.png'
             ],
         ];
 
