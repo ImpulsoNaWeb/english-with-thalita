@@ -192,7 +192,7 @@
                         <span
                             class="whitespace-nowrap font-bold text-brand-dark text-base flex items-center gap-2 cursor-default animate-bounce"
                             data-i18n="hero_swipe">
-                            deslize <i class="fa-solid fa-arrow-down"></i>
+                            deslize para me conhecer <i class="fa-solid fa-arrow-down"></i>
                         </span>
                     </div>
                 </div>

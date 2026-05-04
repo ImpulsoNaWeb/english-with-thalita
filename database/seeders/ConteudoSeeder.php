@@ -68,6 +68,7 @@ class ConteudoSeeder extends Seeder
             'badge' => 'Mais procurado',
             'badge_cor' => 'bg-brand-alert',
             'icone' => 'fa-solid fa-fire',
+            'imagem' => 'seed/servico_conversacao.png',
             'ordem' => 1,
             'esta_ativo' => true,
         ]);
@@ -77,6 +78,7 @@ class ConteudoSeeder extends Seeder
             'badge' => 'Carreira',
             'badge_cor' => 'bg-brand-orange text-white',
             'icone' => 'fa-solid fa-briefcase',
+            'imagem' => 'seed/servico_business.png',
             'ordem' => 2,
             'esta_ativo' => true,
         ]);
@@ -86,6 +88,7 @@ class ConteudoSeeder extends Seeder
             'badge' => 'Foco Prático',
             'badge_cor' => 'bg-[#7ca7f4]',
             'icone' => 'fa-solid fa-earth-americas',
+            'imagem' => 'seed/servico_viagens.png',
             'ordem' => 3,
             'esta_ativo' => true,
         ]);
@@ -95,6 +98,7 @@ class ConteudoSeeder extends Seeder
             'badge' => 'VIP',
             'badge_cor' => 'bg-brand-red text-white',
             'icone' => 'fa-solid fa-gem',
+            'imagem' => 'seed/servico_cidade.png',
             'ordem' => 4,
             'esta_ativo' => true,
         ]);
@@ -104,24 +108,26 @@ class ConteudoSeeder extends Seeder
             'badge' => 'Corporativo',
             'badge_cor' => 'bg-brand-accent text-white',
             'icone' => 'fa-solid fa-building',
+            'imagem' => 'seed/servico_empresas.png',
             'ordem' => 5,
             'esta_ativo' => true,
         ]);
 
         // Depoimentos
         $depoimentos = [
-            ['Mariana Silva, 22', 'Estudante Universitária', '"Eu travava completamente na hora de falar. Em poucos meses com a Thalita, perdi o medo e consegui a pontuação que precisava no TOEFL para meu intercâmbio!"'],
-            ['Carlos Eduardo, 34', 'Desenvolvedor Sênior', '"As aulas focadas em Business English mudaram minha carreira. Hoje conduzo reuniões com a equipe gringa sem suar frio. Metodologia muito prática e direto ao ponto."'],
-            ['Fernanda Costa, 45', 'Empresária', '"Sempre achei que estava velha para aprender inglês do zero. A Thalita teve tanta paciência e montou um material tão voltado para minhas viagens que hoje me viro super bem sozinha."'],
-            ['Amanda Reis, 28', 'Designer UX/UI', '"O foco em comunicação real faz toda a diferença. Eu sabia gramática mas não falava. Em poucas aulas já estava me expressando muito melhor do que anos em cursinho."'],
-            ['Roberto Alves, 52', 'Gerente Comercial', '"Precisava melhorar o inglês para uma promoção. A flexibilidade de horários e as aulas personalizadas foram essenciais para conciliar com minha rotina corrida."'],
-            ['Lucas Mendes, 18', 'Estudante de Ensino Médio', '"As aulas não são chatas como na escola. Falamos de assuntos atuais e práticos. Sinto que estou aprendendo o inglês que realmente se usa no dia a dia e na internet."'],
+            ['Mariana Silva, 22', 'Estudante Universitária', '"Eu travava completamente na hora de falar. Em poucos meses com a Thalita, perdi o medo e consegui a pontuação que precisava no TOEFL para meu intercâmbio!"', 'seed/depo_mariana.png'],
+            ['Carlos Eduardo, 34', 'Desenvolvedor Sênior', '"As aulas focadas em Business English mudaram minha carreira. Hoje conduzo reuniões com a equipe gringa sem suar frio. Metodologia muito prática e direto ao ponto."', 'seed/depo_carlos.png'],
+            ['Fernanda Costa, 45', 'Empresária', '"Sempre achei que estava velha para aprender inglês do zero. A Thalita teve tanta paciência e montou um material tão voltado para minhas viagens que hoje me viro super bem sozinha."', 'seed/depo_fernanda.png'],
+            ['Amanda Reis, 28', 'Designer UX/UI', '"O foco em comunicação real faz toda a diferença. Eu sabia gramática mas não falava. Em poucas aulas já estava me expressando muito melhor do que anos em cursinho."', 'seed/depo_amanda.png'],
+            ['Roberto Alves, 52', 'Gerente Comercial', '"Precisava melhorar o inglês para uma promoção. A flexibilidade de horários e as aulas personalizadas foram essenciais para conciliar com minha rotina corrida."', 'seed/depo_roberto.png'],
+            ['Lucas Mendes, 18', 'Estudante de Ensino Médio', '"As aulas não são chatas como na escola. Falamos de assuntos atuais e práticos. Sinto que estou aprendendo o inglês que realmente se usa no dia a dia e na internet."', 'seed/depo_lucas.png'],
         ];
 
         foreach ($depoimentos as $depo) {
             Depoimento::updateOrCreate(['nome_autor' => $depo[0]], [
                 'cargo_autor' => $depo[1],
                 'conteudo' => $depo[2],
+                'avatar_autor' => $depo[3] ?? null,
                 'nota' => 5,
                 'esta_ativo' => true,
             ]);
