@@ -231,10 +231,9 @@
     <main class="flex-grow pt-20 relative z-10">
         <!-- Hero Section -->
         <section class="relative pt-16 pb-20 lg:pt-32 lg:pb-28">
-            <div
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
-                <div class="max-w-sm md:max-w-md text-left">
+                <div class="max-w-sm md:max-w-2xl flex flex-col items-center text-center">
                     <!-- Retro Title Card -->
                     <div
                         class="bg-brand-card border-[3px] border-brand-dark rounded-3xl shadow-retro-lg py-8 px-10 md:py-12 md:px-16 inline-block mb-10 transform -rotate-2 hover:rotate-0 transition-transform duration-300">
@@ -245,18 +244,18 @@
                     </div>
 
                     <p data-i18n="c_subtitulo_hero"
-                        class="text-2xl md:text-3xl font-bold text-brand-dark mb-10 leading-snug">
+                        class="text-xl md:text-2xl font-bold text-brand-dark mb-10 leading-snug max-w-2xl text-balance">
                         {{ $c['subtitulo_hero']->valor ?? 'Professora de inglês para quem quer se comunicar com confiança e fluência real' }}
                     </p>
 
-                    <div class="flex flex-row gap-4 justify-start items-center">
+                    <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                         <a href="#contato"
                             class="whitespace-nowrap bg-[#25D366] text-brand-dark font-black py-4 px-8 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl flex items-center justify-center gap-3">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
                             <span data-i18n="c_texto_botao_hero">{{ $c['texto_botao_hero']->valor ?? 'Quero Aprender' }}</span>
                         </a>
                         <span
-                            class="whitespace-nowrap font-bold text-brand-dark text-base flex items-center gap-2 cursor-default animate-bounce"
+                            class="font-bold text-brand-dark text-base flex items-center gap-2 cursor-default animate-bounce whitespace-nowrap"
                             data-i18n="hero_swipe">
                             deslize para me conhecer <i class="fa-solid fa-arrow-down"></i>
                         </span>
