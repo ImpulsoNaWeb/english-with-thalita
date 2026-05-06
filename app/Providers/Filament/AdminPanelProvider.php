@@ -45,7 +45,8 @@ class AdminPanelProvider extends PanelProvider
                         .fi-sidebar-item-label, 
                         .fi-sidebar-group-label, 
                         .fi-sidebar-item-icon,
-                        .fi-sidebar-item-button span {
+                        .fi-sidebar-item-button span,
+                        .fi-header-heading {
                             color: #000 !important;
                             font-weight: 600 !important;
                         }
