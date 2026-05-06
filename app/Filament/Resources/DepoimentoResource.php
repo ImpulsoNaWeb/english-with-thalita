@@ -93,6 +93,10 @@ class DepoimentoResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('ordem')
+            ->defaultSort('ordem')
+            ->paginated(false)
+            ->reorderRecordsTriggerAction(fn ($action) => $action->hidden())
             ->columns([
                 Tables\Columns\ImageColumn::make('avatar_autor')
                     ->label('Foto')
@@ -105,8 +109,13 @@ class DepoimentoResource extends Resource
                     ->sortable(),
                 Tables\Columns\ToggleColumn::make('esta_ativo')
                     ->label('Ativo'),
+                Tables\Columns\TextColumn::make('acoes')
+                    ->label('')
+                    ->view('filament.tables.columns.depoimentos-actions')
+                    ->toggleable(false),
             ])
-            ->filters([])
+            ->filters([
+])
             ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),

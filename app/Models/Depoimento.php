@@ -16,5 +16,5 @@ class Depoimento extends Model
     const UPDATED_AT = 'atualizado_em';
     protected $table = 'depoimentos';
 
-    protected $fillable = ['nome_autor', 'cargo_autor', 'avatar_autor', 'conteudo', 'nota', 'seo_title', 'seo_description', 'seo_image', 'esta_ativo'];
+    protected $fillable = ['nome_autor', 'cargo_autor', 'avatar_autor', 'conteudo', 'nota', 'seo_title', 'seo_description', 'seo_image', 'esta_ativo', 'ordem'];
 }

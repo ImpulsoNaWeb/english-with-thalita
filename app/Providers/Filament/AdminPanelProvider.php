@@ -36,6 +36,11 @@ class AdminPanelProvider extends PanelProvider
                 fn (): string => view('filament.components.bottom-nav')->render(),
             )
             ->renderHook(
+                \Filament\View\PanelsRenderHook::CONTENT_AFTER,
+                fn (): string => view('filament.tables.footer.reorder-save-button')->render(),
+                scopes: [\App\Filament\Resources\DepoimentoResource::class, \App\Filament\Resources\ServicoResource::class],
+            )
+            ->renderHook(
                 \Filament\View\PanelsRenderHook::HEAD_START,
                 fn (): string => '
                     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -43,20 +48,59 @@ class AdminPanelProvider extends PanelProvider
                     <link rel="manifest" href="/manifest.json">
                     <style>
                         .fi-sidebar-item-label, 
-                        .fi-sidebar-group-label, 
-                        .fi-sidebar-item-icon,
                         .fi-sidebar-item-button span,
                         .fi-header-heading {
                             color: #000 !important;
                             font-weight: 600 !important;
                         }
+                        .fi-sidebar-item-icon {
+                            color: #1d8985 !important;
+                        }
+                        /* Estilização dos títulos das seções (Site, Catálogo, Sistema) */
+                        .fi-sidebar-group-btn {
+                            background-color: #1d8985 !important;
+                            border-radius: 12px !important;
+                            padding: 10px 16px !important;
+                            margin-bottom: 8px !important;
+                            margin-top: 12px !important;
+                            transition: all 0.2s ease !important;
+                        }
+                        .fi-sidebar-group-label,
+                        .fi-sidebar-group-btn svg {
+                            color: #ffffff !important;
+                            font-weight: 800 !important;
+                            text-transform: uppercase !important;
+                            letter-spacing: 0.05em !important;
+                            font-size: 0.75rem !important;
+                        }
+                        .fi-sidebar-group-btn:hover {
+                            filter: brightness(1.1) !important;
+                        }
+                        /* Ocultação total do checkmark e indicadores de reordenação */
+                        .fi-ta-reorder-indicator,
+                        .fi-ta-reorder-trigger,
+                        [wire\:click*="reorderRecords"],
+                        .fi-ta-actions button:has(svg) {
+                            display: none !important;
+                            visibility: hidden !important;
+                        }
                     </style>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const hideElements = () => {
+                                document.querySelectorAll("[wire\\:click*=\'reorderRecords\']").forEach(el => el.remove());
+                                document.querySelectorAll(".fi-ta-reorder-indicator").forEach(el => el.remove());
+                            };
+                            hideElements();
+                            new MutationObserver(hideElements).observe(document.body, { childList: true, subtree: true });
+                        });
+                    </script>
                 ',
             )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                \App\Filament\Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
@@ -75,6 +119,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->navigationGroups([
+                'Site',
+                'Catálogo',
+                'Sistema',
             ]);
     }
 }

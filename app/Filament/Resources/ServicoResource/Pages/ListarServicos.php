@@ -16,4 +16,14 @@ class ListarServicos extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function isTableReordering(): bool
+    {
+        return true;
+    }
+
+    protected function getTableReorderRecordsTriggerAction(): ?\Filament\Tables\Actions\Action
+    {
+        return null;
+    }
 }

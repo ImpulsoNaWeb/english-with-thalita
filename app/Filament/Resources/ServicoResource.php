@@ -92,6 +92,10 @@ class ServicoResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('ordem')
+            ->defaultSort('ordem')
+            ->paginated(false)
+            ->reorderRecordsTriggerAction(fn ($action) => $action->hidden())
             ->columns([
                 Tables\Columns\ImageColumn::make('imagem')
                     ->label('Imagem')
@@ -101,9 +105,10 @@ class ServicoResource extends Resource
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('esta_ativo')
                     ->label('Ativo'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Criado em')
-                    ->dateTime('d/m/Y'),
+                Tables\Columns\TextColumn::make('acoes')
+                    ->label('')
+                    ->view('filament.tables.columns.servicos-actions')
+                    ->toggleable(false),
             ])
             ->filters([])
             ->actions([

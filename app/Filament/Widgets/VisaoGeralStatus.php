@@ -13,9 +13,9 @@ class VisaoGeralStatus extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Serviços', Servico::count())
-                ->description('Serviços cadastrados')
-                ->descriptionIcon('heroicon-m-wrench-screwdriver')
+            Stat::make('Planos de Estudo', Servico::count())
+                ->description('Planos cadastrados')
+                ->descriptionIcon('heroicon-m-academic-cap')
                 ->color('success'),
             Stat::make('Depoimentos', Depoimento::count())
                 ->description('Feedbacks de alunos')

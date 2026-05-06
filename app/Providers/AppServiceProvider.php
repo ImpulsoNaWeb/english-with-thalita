@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        \Filament\Support\Facades\FilamentIcon::register([
+            \Filament\Tables\View\TablesIconAlias::REORDER_HANDLE => \Filament\Support\Icons\Heroicon::ArrowsUpDown,
+        ]);
+
         \Filament\Forms\Components\FileUpload::configureUsing(function (\Filament\Forms\Components\FileUpload $component) {
             $component->extraInputAttributes(['capture' => 'camera']);
         });

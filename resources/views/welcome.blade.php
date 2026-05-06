@@ -4,7 +4,7 @@
     if (is_string($diferenciais)) $diferenciais = json_decode($diferenciais, true) ?? [];
     
     $servicos = \App\Models\Servico::where('esta_ativo', true)->orderBy('ordem')->get();
-    $depoimentos = \App\Models\Depoimento::where('esta_ativo', true)->get();
+    $depoimentos = \App\Models\Depoimento::where('esta_ativo', true)->orderBy('ordem')->get();
 
     $dbTranslations = ['pt' => [], 'en' => []];
     foreach($c as $key => $model) {
