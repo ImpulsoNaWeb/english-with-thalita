@@ -178,7 +178,7 @@ class ConteudoSeeder extends Seeder
 
         // Serviços (Planos)
         Servico::updateOrCreate(['icone' => 'fa-solid fa-fire'], [
-            'nome' => ['pt_BR' => 'Foco na Conversação', 'en' => 'Conversation Focus'],
+            'nome' => ['pt_BR' => 'Conversação na Prática', 'en' => 'Conversation Practice'],
             'descricao' => [
                 'pt_BR' => 'Já estuda há um tempo mas ainda trava na hora de falar? Ou já se vira bem, mas não atingiu a fluência que deseja? Nossas aulas são para todos os níveis, 100% personalizadas para o seu interesse e necessidade real.',
                 'en' => 'Have you been studying for a while but still freeze when speaking? Or do you manage well but haven\'t reached the fluency you desire? Our classes are for all levels, 100% personalized for your real interest and needs.'
