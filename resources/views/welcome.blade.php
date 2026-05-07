@@ -41,6 +41,8 @@
         $dbTranslations['en']['serv_desc_' . $index] = $servico->getTranslation('descricao', 'en') ?? '';
         $dbTranslations['pt']['serv_badge_' . $index] = $servico->getTranslation('badge', 'pt_BR') ?? '';
         $dbTranslations['en']['serv_badge_' . $index] = $servico->getTranslation('badge', 'en') ?? '';
+        $dbTranslations['pt']['serv_precos_' . $index] = $servico->getTranslation('tabela_precos', 'pt_BR') ?? '';
+        $dbTranslations['en']['serv_precos_' . $index] = $servico->getTranslation('tabela_precos', 'en') ?? '';
     }
 
     foreach($depoimentos as $index => $depo) {
@@ -67,6 +69,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -129,7 +132,7 @@
     </style>
 </head>
 
-<body
+<body x-data="{ modalOpen: false, modalTitle: '', modalContent: '' }"
     class="bg-brand-bg text-brand-dark antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen relative overflow-x-hidden">
 
     <!-- Retro Background Decoration -->
@@ -353,10 +356,19 @@
                             <p class="text-brand-dark/80 font-medium mb-8 flex-grow">
                                 <span data-i18n="serv_desc_{{ $index }}">{{ $servico->descricao }}</span>
                             </p>
-                            <a href="#contato"
-                                class="w-full block text-center bg-brand-dark text-brand-bg font-black py-3 px-4 rounded-xl border-2 border-brand-dark hover:bg-brand-card hover:text-brand-dark transition-colors shadow-retro-sm">
-                                <span data-i18n="card_btn">Consultar Valores</span>
-                            </a>
+                            
+                            <div class="space-y-3">
+                                @if($servico->tabela_precos)
+                                <button @click="modalTitle = translations[currentLang]['serv_titulo_{{ $index }}']; modalContent = translations[currentLang]['serv_precos_{{ $index }}']; modalOpen = true; document.body.style.overflow = 'hidden'"
+                                    class="w-full block text-center bg-brand-accent text-white font-black py-3 px-4 rounded-xl border-2 border-brand-dark hover:bg-brand-orange transition-colors shadow-retro-sm">
+                                    <span data-i18n="card_btn_details">Ver Detalhes e Preços</span>
+                                </button>
+                                @endif
+                                <a href="#contato"
+                                    class="w-full block text-center bg-brand-dark text-brand-bg font-black py-3 px-4 rounded-xl border-2 border-brand-dark hover:bg-brand-card hover:text-brand-dark transition-colors shadow-retro-sm">
+                                    <span data-i18n="card_btn">Quero este plano</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -595,7 +607,8 @@
                 'serv_badge': 'Planos de Estudo',
                 'serv_title': 'A solução ideal para você',
                 'serv_desc': 'Escolha o programa que mais se adequa à sua necessidade atual e vamos acelerar o seu aprendizado.',
-                'card_btn': 'Consultar Valores',
+                'card_btn': 'Quero este plano',
+                'card_btn_details': 'Ver Detalhes e Preços',
                 'footer_desc': 'Transformando o seu inglês de um obstáculo para uma ponte que conecta você ao mundo.',
                 'footer_nav_title': 'Navegação',
                 'footer_nav_sobre': 'Sobre o Método',
@@ -620,7 +633,8 @@
                 'serv_badge': 'Study Plans',
                 'serv_title': 'The ideal solution for you',
                 'serv_desc': "Choose the program that best suits your current needs and let's accelerate your learning.",
-                'card_btn': 'Check Prices',
+                'card_btn': 'I want this plan',
+                'card_btn_details': 'View Details and Prices',
                 'footer_desc': 'Transforming your English from an obstacle into a bridge that connects you to the world.',
                 'footer_nav_title': 'Navigation',
                 'footer_nav_sobre': 'About the Method',
@@ -696,6 +710,82 @@
             });
         });
     </script>
+    <!-- Modal Detalhes Planos -->
+    <div id="modal-planos" x-show="modalOpen" 
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-brand-dark/60 backdrop-blur-sm"
+        x-cloak>
+        <div @click.away="modalOpen = false; document.body.style.overflow = 'auto'"
+            class="bg-brand-bg border-[3px] border-brand-dark rounded-[40px] shadow-retro-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative animate-modal-enter">
+            <div class="sticky top-0 bg-brand-card border-b-[3px] border-brand-dark p-6 flex justify-between items-center z-10">
+                <h3 x-text="modalTitle" class="text-2xl font-black text-brand-dark"></h3>
+                <button @click="modalOpen = false; document.body.style.overflow = 'auto'" class="w-10 h-10 rounded-xl bg-brand-red text-white border-2 border-brand-dark shadow-retro-sm flex items-center justify-center transform transition-all hover:scale-110 active:scale-95">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="p-8 prose prose-brand max-w-none prose-headings:font-black prose-headings:text-brand-dark prose-p:font-medium prose-p:text-brand-dark/80 prose-li:font-medium prose-li:text-brand-dark/80">
+                <div x-html="modalContent" class="modal-content"></div>
+                
+                <div class="mt-10 pt-8 border-t-[3px] border-brand-dark">
+                    <a href="#contato" @click="modalOpen = false; document.body.style.overflow = 'auto'"
+                        class="w-full block text-center bg-brand-accent text-white font-black py-4 px-6 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl">
+                        Falar com a Thalita no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        [x-cloak] { display: none !important; }
+        @keyframes modal-enter {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-modal-enter {
+            animation: modal-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        /* Custom Modal Typography */
+        #modal-planos .modal-content h4 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #494b46;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--brand-accent, #1d8985);
+            padding-left: 0.75rem;
+        }
+        #modal-planos .modal-content ul {
+            list-style-type: none;
+            padding-left: 0.5rem;
+        }
+        #modal-planos .modal-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: rgba(73, 75, 70, 0.9);
+        }
+        #modal-planos .modal-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--brand-accent, #1d8985);
+            font-weight: 900;
+        }
+        #modal-planos .modal-content ul ul {
+            margin-top: 0.25rem;
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            border-left: 2px dashed rgba(73, 75, 70, 0.2);
+        }
+        #modal-planos .modal-content ul ul li::before {
+            content: '•';
+        }
+        #modal-planos .modal-content strong {
+            font-weight: 800;
+            color: #494b46;
+        }
+    </style>
 </body>
 
 </html>

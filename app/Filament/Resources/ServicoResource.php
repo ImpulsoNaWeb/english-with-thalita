@@ -45,6 +45,9 @@ class ServicoResource extends Resource
                                             ->required(),
                                         Forms\Components\TextInput::make('badge.pt_BR')
                                             ->label('Badge (PT) (ex: Mais procurado)'),
+                                        Forms\Components\RichEditor::make('tabela_precos.pt_BR')
+                                            ->label('Preços e Detalhes (PT)')
+                                            ->columnSpanFull(),
                                     ]),
                                 \Filament\Schemas\Components\Tabs\Tab::make('Inglês')
                                     ->schema([
@@ -55,6 +58,9 @@ class ServicoResource extends Resource
                                             ->label('Descrição (EN)'),
                                         Forms\Components\TextInput::make('badge.en')
                                             ->label('Badge (EN)'),
+                                        Forms\Components\RichEditor::make('tabela_precos.en')
+                                            ->label('Preços e Detalhes (EN)')
+                                            ->columnSpanFull(),
                                     ]),
                             ]),
                         Forms\Components\TextInput::make('icone')
