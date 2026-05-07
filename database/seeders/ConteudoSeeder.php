@@ -183,6 +183,10 @@ class ConteudoSeeder extends Seeder
                 'pt_BR' => 'Já estuda há um tempo mas ainda trava na hora de falar? Ou já se vira bem, mas não atingiu a fluência que deseja? Nossas aulas são para todos os níveis, 100% personalizadas para o seu interesse e necessidade real.',
                 'en' => 'Have you been studying for a while but still freeze when speaking? Or do you manage well but haven\'t reached the fluency you desire? Our classes are for all levels, 100% personalized for your real interest and needs.'
             ],
+            'tabela_precos' => [
+                'pt_BR' => '<h4>Aulas Particulares (1:1)</h4><ul><li><strong>1x por semana (1h):</strong><ul><li>Mensal: R$600 (R$150/h)</li><li>Trimestral: R$520/mês (R$130/h)</li></ul></li><li><strong>2x por semana (1h cada):</strong><ul><li>Mensal: R$1.120 (R$140/h)</li><li>Trimestral: R$960/mês (R$120/h)</li></ul></li></ul><h4 class="mt-4">Aulas em Grupo (4–6 alunos)</h4><ul><li><strong>1x por semana (1h):</strong><ul><li>Mensal: R$340</li><li>Trimestral: R$300/mês</li></ul></li><li><strong>2x por semana (1h cada):</strong><ul><li>Mensal: R$640</li><li>Trimestral: R$560/mês</li></ul></li></ul>',
+                'en' => '<h4>Private Classes (1:1)</h4><ul><li><strong>1x per week (1h):</strong><ul><li>Monthly: R$600 (R$150/h)</li><li>Quarterly: R$520/mo (R$130/h)</li></ul></li><li><strong>2x per week (1h each):</strong><ul><li>Monthly: R$1,120 (R$140/h)</li><li>Quarterly: R$960/mo (R$120/h)</li></ul></li></ul><h4 class="mt-4">Group Classes (4–6 students)</h4><ul><li><strong>1x per week (1h):</strong><ul><li>Monthly: R$340</li><li>Quarterly: R$300/mo</li></ul></li><li><strong>2x per week (1h each):</strong><ul><li>Monthly: R$640</li><li>Quarterly: R$560/mo</li></ul></li></ul>'
+            ],
             'badge' => ['pt_BR' => 'Mais procurado', 'en' => 'Most popular'],
             'badge_cor' => 'bg-brand-alert',
             'imagem' => 'seed/servico_conversacao_v2.png',
@@ -195,6 +199,10 @@ class ConteudoSeeder extends Seeder
             'descricao' => [
                 'pt_BR' => 'Destaque-se no mercado de trabalho. Prepare-se para reuniões, apresentações, entrevistas e negociações com vocabulário corporativo de alto nível.',
                 'en' => 'Stand out in the job market. Prepare for meetings, presentations, interviews, and negotiations with high-level corporate vocabulary.'
+            ],
+            'tabela_precos' => [
+                'pt_BR' => '<h4>Aulas particulares (1:1)</h4><ul><li><strong>1x por semana (1h):</strong><ul><li>Mensal: R$760 (R$190/h)</li><li>Trimestral: R$720/mês (R$180/h)</li></ul></li><li><strong>2x por semana (1h cada):</strong><ul><li>Mensal: R$1.400 (R$175/h)</li><li>Trimestral: R$1.320/mês (R$165/h)</li></ul></li></ul>',
+                'en' => '<h4>Private classes (1:1)</h4><ul><li><strong>1x per week (1h):</strong><ul><li>Monthly: R$760 (R$190/h)</li><li>Quarterly: R$720/mo (R$180/h)</li></ul></li><li><strong>2x per week (1h each):</strong><ul><li>Monthly: R$1,400 (R$175/h)</li><li>Quarterly: R$1,320/mo (R$165/h)</li></ul></li></ul>'
             ],
             'badge' => ['pt_BR' => 'Carreira', 'en' => 'Career'],
             'badge_cor' => 'bg-brand-orange text-white',
@@ -209,6 +217,10 @@ class ConteudoSeeder extends Seeder
                 'pt_BR' => 'Aprenda o essencial para se comunicar em aeroportos, hotéis, restaurantes, interações sociais e situações de emergência durante suas viagens.',
                 'en' => 'Learn the essentials to communicate in airports, hotels, restaurants, social interactions, and emergency situations during your travels.'
             ],
+            'tabela_precos' => [
+                'pt_BR' => '<h4>Grupos (até 6 pessoas)</h4><ul><li>Curso de 6 semanas (1h/semana)</li><li>R$570 total por aluno</li><li><strong>Early bird: R$470</strong></li></ul><h4 class="mt-4">Intensivo Individual</h4><ul><li>2 semanas (3x/semana - 6 aulas)</li><li>R$1.350 total</li></ul>',
+                'en' => '<h4>Groups (up to 6 people)</h4><ul><li>6-week course (1h/week)</li><li>R$570 total per student</li><li><strong>Early bird: R$470</strong></li></ul><h4 class="mt-4">Individual Intensive</h4><ul><li>2 weeks (3x/week - 6 classes)</li><li>R$1,350 total</li></ul>'
+            ],
             'badge' => ['pt_BR' => 'Foco Prático', 'en' => 'Practical Focus'],
             'badge_cor' => 'bg-[#7ca7f4]',
             'imagem' => 'seed/servico_viagens_v2.png',
@@ -222,6 +234,10 @@ class ConteudoSeeder extends Seeder
                 'pt_BR' => 'Fuja das salas de aula e aprenda inglês onde a vida acontece. Pratique conversação em ambientes reais com suporte total para o seu dia a dia.',
                 'en' => 'Escape the classroom and learn English where life happens. Practice conversation in real environments with full support for your daily life.'
             ],
+            'tabela_precos' => [
+                'pt_BR' => '<h4>Grupo (até 5 pessoas)</h4><ul><li>R$130 por pessoa / encontro</li></ul><h4 class="mt-4">Grupos maiores</h4><ul><li>R$70 – R$100 por pessoa (sob consulta)</li></ul>',
+                'en' => '<h4>Group (up to 5 people)</h4><ul><li>R$130 per person / meeting</li></ul><h4 class="mt-4">Larger groups</h4><ul><li>R$70 – R$100 per person (on request)</li></ul>'
+            ],
             'badge' => ['pt_BR' => 'VIP', 'en' => 'VIP'],
             'badge_cor' => 'bg-brand-red text-white',
             'imagem' => 'seed/servico_cidade_v2.png',
@@ -234,6 +250,10 @@ class ConteudoSeeder extends Seeder
             'descricao' => [
                 'pt_BR' => 'Treinamento prático para equipes que atendem clientes em inglês. Conteúdo adaptado à realidade da empresa e acessível para diferentes níveis.',
                 'en' => 'Practical training for teams serving customers in English. Content adapted to the company\'s reality and accessible for different levels.'
+            ],
+            'tabela_precos' => [
+                'pt_BR' => '<h4>Consultoria / Diagnóstico Inicial</h4><ul><li>R$570 (abatido caso feche contrato)</li></ul><h4 class="mt-4">Treinamento em Grupo (1x/semana - 8 ou 12 semanas)</h4><ul><li><strong>ONLINE:</strong><ul><li>8 semanas - R$2.300 por grupo</li><li>12 semanas - R$3.300 por grupo</li></ul></li><li><strong>PRESENCIAL:</strong> Treinamentos presenciais podem incluir taxa adicional referente a deslocamento e logística, definida conforme localização da empresa e formato do treinamento.</li></ul><h4 class="mt-4">Workshop Corporativo</h4><ul><li>2 a 3 horas: A partir de R$1.200</li></ul><div class="mt-4"><p class="font-bold">Valor final definido conforme:</p><ul><li>número de participantes</li><li>nível de personalização</li><li>duração</li><li>deslocamento (se presencial)</li></ul></div>',
+                'en' => '<h4>Consultancy / Initial Diagnosis</h4><ul><li>R$570 (deducted if contract is closed)</li></ul><h4 class="mt-4">Group Training (1x/week - 8 or 12 weeks)</h4><ul><li><strong>ONLINE:</strong><ul><li>8 weeks - R$2,300 per group</li><li>12 weeks - R$3,300 per group</li></ul></li><li><strong>IN-PERSON:</strong> In-person training may include an additional fee for travel and logistics, defined according to company location and training format.</li></ul><h4 class="mt-4">Corporate Workshop</h4><ul><li>2 to 3 hours: From R$1,200</li></ul><div class="mt-4"><p class="font-bold">Final value defined according to:</p><ul><li>number of participants</li><li>level of customization</li><li>duration</li><li>travel (if in-person)</li></ul></div>'
             ],
             'badge' => ['pt_BR' => 'Corporativo', 'en' => 'Corporate'],
             'badge_cor' => 'bg-brand-accent text-white',
