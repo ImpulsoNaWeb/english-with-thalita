@@ -331,10 +331,10 @@
                         necessidade atual e vamos acelerar o seu aprendizado.</p>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-8 relative z-10">
+                <div class="flex flex-wrap justify-center items-stretch gap-8 relative z-10">
                     @foreach($servicos as $index => $servico)
                     <div
-                        class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-2rem)] md:min-h-[600px] bg-brand-cardLight border-[3px] border-brand-dark rounded-3xl shadow-retro-lg overflow-hidden flex flex-col h-full transform hover:-translate-y-2 transition-transform duration-300 relative">
+                        class="w-full md:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2rem)] bg-brand-cardLight border-[3px] border-brand-dark rounded-3xl shadow-retro-lg overflow-hidden flex flex-col transform hover:-translate-y-2 transition-transform duration-300 relative">
                         @if($servico->imagem)
                         <div class="h-48 overflow-hidden border-b-[3px] border-brand-dark">
                             <img src="{{ Storage::url($servico->imagem) }}"
