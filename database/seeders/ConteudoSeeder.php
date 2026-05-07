@@ -320,7 +320,7 @@ class ConteudoSeeder extends Seeder
             ],
         ];
 
-        Depoimento::query()->delete();
+        Depoimento::query()->forceDelete();
         $index_depo = 1;
         foreach ($depoimentos as $depo) {
             Depoimento::updateOrCreate(['nome_autor' => $depo['nome']], [
