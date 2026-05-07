@@ -320,12 +320,14 @@ class ConteudoSeeder extends Seeder
             ],
         ];
 
+        $index_depo = 1;
         foreach ($depoimentos as $depo) {
             Depoimento::updateOrCreate(['nome_autor' => $depo['nome']], [
                 'cargo_autor' => $depo['cargo'],
                 'conteudo' => $depo['conteudo'],
                 'avatar_autor' => $depo['avatar'],
                 'nota' => 5,
+                'ordem' => $index_depo++,
                 'esta_ativo' => true,
             ]);
         }
