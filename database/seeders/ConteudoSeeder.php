@@ -265,7 +265,7 @@ class ConteudoSeeder extends Seeder
         // Depoimentos
         $depoimentos = [
             [
-                'nome' => 'Mariana Silva, 22',
+                'nome' => 'Mariana Silva, ??',
                 'cargo' => ['pt_BR' => 'Estudante Universitária', 'en' => 'University Student'],
                 'conteudo' => [
                     'pt_BR' => '"Eu travava completamente na hora de falar. Em poucos meses com a Thalita, perdi o medo e consegui a pontuação que precisava no TOEFL para meu intercâmbio!"',
@@ -274,7 +274,7 @@ class ConteudoSeeder extends Seeder
                 'avatar' => 'seed/depo_mariana_v2.png'
             ],
             [
-                'nome' => 'Carlos Eduardo, 34',
+                'nome' => 'Carlos Eduardo, ??',
                 'cargo' => ['pt_BR' => 'Desenvolvedor Sênior', 'en' => 'Senior Developer'],
                 'conteudo' => [
                     'pt_BR' => '"As aulas focadas em Business English mudaram minha carreira. Hoje conduzo reuniões com a equipe gringa sem suar frio. Metodologia muito prática e direto ao ponto."',
@@ -283,7 +283,7 @@ class ConteudoSeeder extends Seeder
                 'avatar' => 'seed/depo_carlos_v2.png'
             ],
             [
-                'nome' => 'Fernanda Costa, 45',
+                'nome' => 'Fernanda Costa, ??',
                 'cargo' => ['pt_BR' => 'Empresária', 'en' => 'Businesswoman'],
                 'conteudo' => [
                     'pt_BR' => '"Sempre achei que estava velha para aprender inglês do zero. A Thalita teve tanta paciência e montou um material tão voltado para minhas viagens que hoje me viro super bem sozinha."',
