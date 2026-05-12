@@ -275,8 +275,13 @@
                         <div
                             class="absolute inset-0 bg-brand-orange rounded-3xl transform translate-x-4 translate-y-4 border-[3px] border-brand-dark">
                         </div>
-                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Thalita ensinando"
+                        @php
+                            $fotoSobre = $c['foto_sobre']->valor ?? 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                            if (is_array($fotoSobre)) $fotoSobre = $fotoSobre[0] ?? null;
+                            $fotoUrl = (str_starts_with($fotoSobre, 'http')) ? $fotoSobre : asset('storage/' . $fotoSobre);
+                        @endphp
+                        <img src="{{ $fotoUrl }}"
+                            alt="{{ $c['sobre_titulo']->valor ?? 'Thalita ensinando' }}"
                             class="w-full h-auto object-cover rounded-3xl border-[3px] border-brand-dark relative z-10 grayscale-[20%] sepia-[20%]">
                     </div>
 
@@ -620,7 +625,8 @@
                 'footer_dev': 'Desenvolvido por',
                 'depo_badge': 'Histórias de Sucesso',
                 'depo_title': 'O que dizem os alunos',
-                'depo_desc': 'Resultados reais de quem decidiu destravar o inglês de uma vez por todas.'
+                'depo_desc': 'Resultados reais de quem decidiu destravar o inglês de uma vez por todas.',
+                'modal_whatsapp_btn': 'Falar com a Thalita no WhatsApp'
             },
             'en': {
                 'nav_sobre': 'About',
@@ -646,7 +652,8 @@
                 'footer_dev': 'Developed by',
                 'depo_badge': 'Success Stories',
                 'depo_title': 'What students say',
-                'depo_desc': 'Real results from those who decided to unlock their English once and for all.'
+                'depo_desc': 'Real results from those who decided to unlock their English once and for all.',
+                'modal_whatsapp_btn': 'Talk to Thalita on WhatsApp'
             }
         };
 
@@ -726,8 +733,11 @@
                 <div x-html="modalContent" class="modal-content"></div>
                 
                 <div class="mt-10 pt-8 border-t-[3px] border-brand-dark">
-                    <a href="#contato" @click="modalOpen = false; document.body.style.overflow = 'auto'"
-                        class="w-full block text-center bg-brand-accent text-white font-black py-4 px-6 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl">
+                    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $c['whatsapp_contato']->valor ?? '5519997799589') }}?text=Ol%C3%A1,%20vi%20os%20detalhes%20do%20plano%20e%20gostaria%20de%20conversar!" 
+                        target="_blank" rel="noopener noreferrer"
+                        @click="modalOpen = false; document.body.style.overflow = 'auto'"
+                        class="w-full block text-center bg-brand-accent text-white font-black py-4 px-6 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl"
+                        data-i18n="modal_whatsapp_btn">
                         Falar com a Thalita no WhatsApp
                     </a>
                 </div>

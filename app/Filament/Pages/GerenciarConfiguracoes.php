@@ -44,7 +44,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
         }
         
         // Garantir que campos de arquivo sejam sempre arrays para o Filament
-        foreach (['logo_site', 'favicon_site'] as $campo) {
+        foreach (['logo_site', 'favicon_site', 'foto_sobre'] as $campo) {
             $valor = $this->dados[$campo] ?? null;
             if ($valor) {
                 $this->dados[$campo] = is_array($valor) ? $valor : [$valor];
@@ -95,6 +95,12 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                             ]),
                         Tabs\Tab::make('Sobre')
                             ->schema([
+                                FileUpload::make('foto_sobre')
+                                    ->label('Imagem da Seção Sobre')
+                                    ->image()
+                                    ->disk('public')
+                                    ->visibility('public')
+                                    ->columnSpanFull(),
                                 Tabs::make('Idiomas Sobre')
                                     ->tabs([
                                         Tabs\Tab::make('Português')

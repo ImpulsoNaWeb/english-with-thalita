@@ -63,6 +63,11 @@ class ConteudoSeeder extends Seeder
             'grupo' => 'sobre'
         ]);
         
+        Configuracao::updateOrCreate(['chave' => 'foto_sobre'], [
+            'valor' => 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'grupo' => 'sobre'
+        ]);
+        
         // Diferenciais
         $difs_pt = [
             [
@@ -218,7 +223,7 @@ class ConteudoSeeder extends Seeder
                 'en' => 'Learn the essentials to communicate in airports, hotels, restaurants, social interactions, and emergency situations during your travels.'
             ],
             'tabela_precos' => [
-                'pt_BR' => '<h4>Grupos (até 6 pessoas)</h4><ul><li>Curso de 6 semanas (1h/semana)</li><li>R$570 total por aluno</li><li><strong>Early bird: R$470</strong></li></ul><h4 class="mt-4">Intensivo Individual</h4><ul><li>2 semanas (3x/semana - 6 aulas)</li><li>R$1.350 total</li></ul>',
+                'pt_BR' => '<h4>Grupos (até 6 pessoas)</h4><ul><li>Curso de 6 semanas (1h/semana)</li><li>R$570 total por aluno</li><li><strong>Primeiros inscritos: R$470</strong></li></ul><h4 class="mt-4">Intensivo Individual</h4><ul><li>2 semanas (3x/semana - 6 aulas)</li><li>R$1.350 total</li></ul>',
                 'en' => '<h4>Groups (up to 6 people)</h4><ul><li>6-week course (1h/week)</li><li>R$570 total per student</li><li><strong>Early bird: R$470</strong></li></ul><h4 class="mt-4">Individual Intensive</h4><ul><li>2 weeks (3x/week - 6 classes)</li><li>R$1,350 total</li></ul>'
             ],
             'badge' => ['pt_BR' => 'Foco Prático', 'en' => 'Practical Focus'],
