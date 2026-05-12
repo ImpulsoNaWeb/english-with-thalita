@@ -325,15 +325,16 @@
         <section id="servicos" class="py-24 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16 relative z-10">
-                    <span data-i18n="serv_badge"
+                    <span data-i18n="c_secao_planos_badge"
                         class="inline-block bg-brand-red text-white font-black text-sm uppercase tracking-widest py-1 px-3 border-2 border-brand-dark rounded-full mb-4 transform rotate-2">
-                        Planos de Estudo
+                        {{ $c['secao_planos_badge']->valor ?? 'Planos de Estudo' }}
                     </span>
-                    <h2 data-i18n="serv_title" class="text-4xl md:text-5xl font-black text-brand-dark mb-4">A solução
-                        ideal para você</h2>
-                    <p data-i18n="serv_desc" class="text-xl font-medium text-brand-dark/80">Escolha o programa que mais
-                        se adequa à sua
-                        necessidade atual e vamos acelerar o seu aprendizado.</p>
+                    <h2 data-i18n="c_secao_planos_titulo" class="text-4xl md:text-5xl font-black text-brand-dark mb-4">
+                        {{ $c['secao_planos_titulo']->valor ?? 'A solução ideal para você' }}
+                    </h2>
+                    <p data-i18n="c_secao_planos_descricao" class="text-xl font-medium text-brand-dark/80">
+                        {{ $c['secao_planos_descricao']->valor ?? 'Escolha o programa que mais se adequa à sua necessidade atual e vamos acelerar o seu aprendizado.' }}
+                    </p>
                 </div>
 
                 <div class="flex flex-wrap justify-center items-stretch gap-8 relative z-10">
@@ -393,14 +394,16 @@
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span data-i18n="depo_badge"
+                    <span data-i18n="c_secao_depoimentos_badge"
                         class="inline-block bg-brand-card text-brand-dark font-black text-sm uppercase tracking-widest py-1 px-3 border-2 border-brand-dark rounded-full mb-4 transform -rotate-2">
-                        Histórias de Sucesso
+                        {{ $c['secao_depoimentos_badge']->valor ?? 'Histórias de Sucesso' }}
                     </span>
-                    <h2 data-i18n="depo_title" class="text-4xl md:text-5xl font-black text-white mb-4">O que dizem os
-                        alunos</h2>
-                    <p data-i18n="depo_desc" class="text-xl font-medium text-brand-bg/80">Resultados reais de quem
-                        decidiu destravar o inglês de uma vez por todas.</p>
+                    <h2 data-i18n="c_secao_depoimentos_titulo" class="text-4xl md:text-5xl font-black text-white mb-4">
+                        {{ $c['secao_depoimentos_titulo']->valor ?? 'O que dizem os alunos' }}
+                    </h2>
+                    <p data-i18n="c_secao_depoimentos_descricao" class="text-xl font-medium text-brand-bg/80">
+                        {{ $c['secao_depoimentos_descricao']->valor ?? 'Resultados reais de quem decidiu destravar o inglês de uma vez por todas.' }}
+                    </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -487,8 +490,8 @@
                 <a href="#" class="text-3xl font-black tracking-tighter text-brand-bg inline-block mb-4">
                     English with <span class="text-brand-card">Thalita</span>
                 </a>
-                <p data-i18n="footer_desc" class="text-brand-bg/70 font-medium mb-6">
-                    Transformando o seu inglês de um obstáculo para uma ponte que conecta você ao mundo.
+                <p data-i18n="c_footer_descricao" class="text-brand-bg/70 font-medium mb-6">
+                    {{ $c['footer_descricao']->valor ?? 'Transformando o seu inglês de um obstáculo para uma ponte que conecta você ao mundo.' }}
                 </p>
                 <div class="flex gap-4 justify-center md:justify-start">
                     <a href="https://www.instagram.com/englishwiththalita/" target="_blank" rel="noopener noreferrer"
@@ -609,12 +612,8 @@
                 'nav_cta': 'Agendar Aula',
                 'mob_nav_cta': 'Fale no WhatsApp',
                 'hero_swipe': 'deslize para me conhecer <i class="fa-solid fa-arrow-down"></i>',
-                'serv_badge': 'Planos de Estudo',
-                'serv_title': 'A solução ideal para você',
-                'serv_desc': 'Escolha o programa que mais se adequa à sua necessidade atual e vamos acelerar o seu aprendizado.',
                 'card_btn': 'Quero este plano',
                 'card_btn_details': 'Ver Detalhes e Preços',
-                'footer_desc': 'Transformando o seu inglês de um obstáculo para uma ponte que conecta você ao mundo.',
                 'footer_nav_title': 'Navegação',
                 'footer_nav_sobre': 'Sobre o Método',
                 'footer_nav_planos': 'Planos de Aula',
@@ -622,11 +621,7 @@
                 'footer_nav_contato': 'Contato e Valores',
                 'footer_contato_title': 'Contato Direto',
                 'footer_rights': '&copy; 2026 English with Thalita. Todos os direitos reservados.',
-                'footer_dev': 'Desenvolvido por',
-                'depo_badge': 'Histórias de Sucesso',
-                'depo_title': 'O que dizem os alunos',
-                'depo_desc': 'Resultados reais de quem decidiu destravar o inglês de uma vez por todas.',
-                'modal_whatsapp_btn': 'Falar com a Thalita no WhatsApp'
+                'footer_dev': 'Desenvolvido por'
             },
             'en': {
                 'nav_sobre': 'About',
@@ -636,12 +631,8 @@
                 'nav_cta': 'Book Class',
                 'mob_nav_cta': 'Contact on WhatsApp',
                 'hero_swipe': 'swipe to get to know me <i class="fa-solid fa-arrow-down"></i>',
-                'serv_badge': 'Study Plans',
-                'serv_title': 'The ideal solution for you',
-                'serv_desc': "Choose the program that best suits your current needs and let's accelerate your learning.",
                 'card_btn': 'I want this plan',
                 'card_btn_details': 'View Details and Prices',
-                'footer_desc': 'Transforming your English from an obstacle into a bridge that connects you to the world.',
                 'footer_nav_title': 'Navigation',
                 'footer_nav_sobre': 'About the Method',
                 'footer_nav_planos': 'Study Plans',
@@ -649,11 +640,7 @@
                 'footer_nav_contato': 'Contact and Prices',
                 'footer_contato_title': 'Direct Contact',
                 'footer_rights': '&copy; 2026 English with Thalita. All rights reserved.',
-                'footer_dev': 'Developed by',
-                'depo_badge': 'Success Stories',
-                'depo_title': 'What students say',
-                'depo_desc': 'Real results from those who decided to unlock their English once and for all.',
-                'modal_whatsapp_btn': 'Talk to Thalita on WhatsApp'
+                'footer_dev': 'Developed by'
             }
         };
 
@@ -737,8 +724,8 @@
                         target="_blank" rel="noopener noreferrer"
                         @click="modalOpen = false; document.body.style.overflow = 'auto'"
                         class="w-full block text-center bg-brand-accent text-white font-black py-4 px-6 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl"
-                        data-i18n="modal_whatsapp_btn">
-                        Falar com a Thalita no WhatsApp
+                        data-i18n="c_texto_whatsapp_modal">
+                        {{ $c['texto_whatsapp_modal']->valor ?? 'Falar com a Thalita no WhatsApp' }}
                     </a>
                 </div>
             </div>

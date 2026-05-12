@@ -181,6 +181,52 @@ class ConteudoSeeder extends Seeder
             'grupo' => 'seo'
         ]);
 
+        // Textos das Seções
+        Configuracao::updateOrCreate(['chave' => 'secao_planos_badge'], [
+            'valor' => ['pt_BR' => 'Planos de Estudo', 'en' => 'Study Plans'],
+            'grupo' => 'planos'
+        ]);
+        Configuracao::updateOrCreate(['chave' => 'secao_planos_titulo'], [
+            'valor' => ['pt_BR' => 'A solução ideal para você', 'en' => 'The ideal solution for you'],
+            'grupo' => 'planos'
+        ]);
+        Configuracao::updateOrCreate(['chave' => 'secao_planos_descricao'], [
+            'valor' => [
+                'pt_BR' => 'Escolha o programa que mais se adequa à sua necessidade atual e vamos acelerar o seu aprendizado.',
+                'en' => 'Choose the program that best suits your current needs and let\'s accelerate your learning.'
+            ],
+            'grupo' => 'planos'
+        ]);
+
+        Configuracao::updateOrCreate(['chave' => 'secao_depoimentos_badge'], [
+            'valor' => ['pt_BR' => 'Histórias de Sucesso', 'en' => 'Success Stories'],
+            'grupo' => 'depoimentos'
+        ]);
+        Configuracao::updateOrCreate(['chave' => 'secao_depoimentos_titulo'], [
+            'valor' => ['pt_BR' => 'O que dizem os alunos', 'en' => 'What students say'],
+            'grupo' => 'depoimentos'
+        ]);
+        Configuracao::updateOrCreate(['chave' => 'secao_depoimentos_descricao'], [
+            'valor' => [
+                'pt_BR' => 'Resultados reais de quem decidiu destravar o inglês de uma vez por todas.',
+                'en' => 'Real results from those who decided to unlock their English once and for all.'
+            ],
+            'grupo' => 'depoimentos'
+        ]);
+
+        Configuracao::updateOrCreate(['chave' => 'footer_descricao'], [
+            'valor' => [
+                'pt_BR' => 'Transformando o seu inglês de um obstáculo para uma ponte que conecta você ao mundo.',
+                'en' => 'Transforming your English from an obstacle into a bridge that connects you to the world.'
+            ],
+            'grupo' => 'footer'
+        ]);
+
+        Configuracao::updateOrCreate(['chave' => 'texto_whatsapp_modal'], [
+            'valor' => ['pt_BR' => 'Falar com a Thalita no WhatsApp', 'en' => 'Talk to Thalita on WhatsApp'],
+            'grupo' => 'planos'
+        ]);
+
         // Serviços (Planos)
         Servico::updateOrCreate(['icone' => 'fa-solid fa-fire'], [
             'nome' => ['pt_BR' => 'Conversação na Prática', 'en' => 'Conversation Practice'],
