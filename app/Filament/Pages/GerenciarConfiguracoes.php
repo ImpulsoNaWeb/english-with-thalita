@@ -137,6 +137,58 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                             ]),
                                     ]),
                             ]),
+                        Tabs\Tab::make('Planos de Estudo')
+                            ->schema([
+                                Tabs::make('Idiomas Planos')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('secao_planos_badge.pt_BR')->label('Badge da Seção (PT)'),
+                                                TextInput::make('secao_planos_titulo.pt_BR')->label('Título da Seção (PT)'),
+                                                Textarea::make('secao_planos_descricao.pt_BR')->label('Descrição da Seção (PT)'),
+                                                TextInput::make('texto_whatsapp_modal.pt_BR')->label('Botão do Modal WhatsApp (PT)'),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('secao_planos_badge.en')->label('Badge da Seção (EN)'),
+                                                TextInput::make('secao_planos_titulo.en')->label('Título da Seção (EN)'),
+                                                Textarea::make('secao_planos_descricao.en')->label('Descrição da Seção (EN)'),
+                                                TextInput::make('texto_whatsapp_modal.en')->label('Botão do Modal WhatsApp (EN)'),
+                                            ]),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Depoimentos')
+                            ->schema([
+                                Tabs::make('Idiomas Depoimentos')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('secao_depoimentos_badge.pt_BR')->label('Badge da Seção (PT)'),
+                                                TextInput::make('secao_depoimentos_titulo.pt_BR')->label('Título da Seção (PT)'),
+                                                Textarea::make('secao_depoimentos_descricao.pt_BR')->label('Descrição da Seção (PT)'),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('secao_depoimentos_badge.en')->label('Badge da Seção (EN)'),
+                                                TextInput::make('secao_depoimentos_titulo.en')->label('Título da Seção (EN)'),
+                                                Textarea::make('secao_depoimentos_descricao.en')->label('Descrição da Seção (EN)'),
+                                            ]),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Footer')
+                            ->schema([
+                                Tabs::make('Idiomas Footer')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                Textarea::make('footer_descricao.pt_BR')->label('Descrição do Rodapé (PT)'),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                Textarea::make('footer_descricao.en')->label('Descrição do Rodapé (EN)'),
+                                            ]),
+                                    ]),
+                            ]),
                         Tabs\Tab::make('SEO')
                             ->schema([
                                 Tabs::make('Idiomas SEO')
