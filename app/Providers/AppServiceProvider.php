@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (str_starts_with(config('app.url'), 'https')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         \Filament\Support\Facades\FilamentIcon::register([
             \Filament\Tables\View\TablesIconAlias::REORDER_HANDLE => \Filament\Support\Icons\Heroicon::ArrowsUpDown,
         ]);

@@ -11,15 +11,8 @@ A aplicação falhava durante o `composer install` (especificamente no `package:
 ## Ajustes Recentes
 - **WhatsApp nos Planos de Estudo:** O botão "Falar com a Thalita no WhatsApp" no modal de detalhes dos planos foi atualizado para redirecionar diretamente para o WhatsApp com uma mensagem personalizada, em vez de rolar para a seção de contato. Adicionada também a internacionalização (i18n) para este botão.
 
-## Estado Atual
-- Banco de dados: Configurado e migrado.
-- Aplicação: Rodando via `php artisan serve`.
-- Erros de boot: Resolvidos.
-- **Fluxo de Conversão:** 
-  - Link direto para WhatsApp nos detalhes dos planos agora inclui o nome do plano selecionado.
-  - **Editável via Painel:** O template da mensagem ("Olá, vi os detalhes do plano [PLAN]...") agora pode ser editado diretamente no dashboard na aba "Planos de Estudo".
-  - Suporte completo a traduções (PT/EN) para a mensagem do WhatsApp.
-- **Gestão de Fotos do Site:** 
-  - Centralizada a troca da foto da seção "Sobre" na aba "Sobre" das configurações.
-  - Adicionado campo para "Foto de Fundo do Hero" (opcional).
-  - Atualizado o `ConteudoSeeder` para utilizar caminhos locais (`seed/thalita_sobre.jpg`), facilitando o setup inicial com as fotos reais da Thalita.
+- **Correções de Produção (VPS):**
+  - **HTTPS/Mixed Content:** Configurado `trustProxies(at: '*')` no `bootstrap/app.php` para resolver bloqueios de upload e assets causados por HTTPS atrás de proxy reverso.
+  - **Console Errors:** Corrigido seletor JavaScript no `AdminPanelProvider.php` (usando Nowdoc para gestão segura de backslashes) e atualizada a metatag `mobile-web-app-capable`.
+  - **PWA Manifest:** Limpeza de assets inexistentes para eliminar erros 404.
+  - **Environment:** Ajustado `.env` para suporte a `APP_URL` com HTTPS e modo de depuração.
