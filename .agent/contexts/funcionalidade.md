@@ -16,7 +16,8 @@ A aplicação falhava durante o `composer install` (especificamente no `package:
 - Aplicação: Rodando via `php artisan serve`.
 - Erros de boot: Resolvidos.
 - **Fluxo de Conversão:** 
-  - Link direto para WhatsApp nos detalhes dos planos agora inclui o nome do plano selecionado na mensagem (Ex: "Olá, vi os detalhes do plano Conversação na Prática...").
+  - Link direto para WhatsApp nos detalhes dos planos agora inclui o nome do plano selecionado.
+  - **Editável via Painel:** O template da mensagem ("Olá, vi os detalhes do plano [PLAN]...") agora pode ser editado diretamente no dashboard na aba "Planos de Estudo".
   - Suporte completo a traduções (PT/EN) para a mensagem do WhatsApp.
 - **Gestão de Fotos do Site:** 
   - Centralizada a troca da foto da seção "Sobre" na aba "Sobre" das configurações.
