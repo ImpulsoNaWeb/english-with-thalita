@@ -621,8 +621,7 @@
                 'footer_nav_contato': 'Contato e Valores',
                 'footer_contato_title': 'Contato Direto',
                 'footer_rights': '&copy; 2026 English with Thalita. Todos os direitos reservados.',
-                'footer_dev': 'Desenvolvido por',
-                'whatsapp_plan_message': 'Olá, vi os detalhes do plano [PLAN] e gostaria de conversar!'
+                'footer_dev': 'Desenvolvido por'
             },
             'en': {
                 'nav_sobre': 'About',
@@ -641,8 +640,7 @@
                 'footer_nav_contato': 'Contact and Prices',
                 'footer_contato_title': 'Direct Contact',
                 'footer_rights': '&copy; 2026 English with Thalita. All rights reserved.',
-                'footer_dev': 'Developed by',
-                'whatsapp_plan_message': 'Hi, I saw the details for the [PLAN] plan and would like to talk!'
+                'footer_dev': 'Developed by'
             }
         };
 
@@ -722,7 +720,7 @@
                 <div x-html="modalContent" class="modal-content"></div>
                 
                 <div class="mt-10 pt-8 border-t-[3px] border-brand-dark">
-                    <a x-bind:href="'https://wa.me/{{ preg_replace('/[^0-9]/', '', $c['whatsapp_contato']->valor ?? '5519997799589') }}?text=' + encodeURIComponent(translations[currentLang]['whatsapp_plan_message'].replace('[PLAN]', modalTitle))" 
+                    <a x-bind:href="'https://wa.me/{{ preg_replace('/[^0-9]/', '', $c['whatsapp_contato']->valor ?? '5519997799589') }}?text=' + encodeURIComponent(translations[currentLang]['c_whatsapp_mensagem_plano'].replace('[PLAN]', modalTitle))" 
                         target="_blank" rel="noopener noreferrer"
                         @click="modalOpen = false; document.body.style.overflow = 'auto'"
                         class="w-full block text-center bg-brand-accent text-white font-black py-4 px-6 rounded-2xl border-[3px] border-brand-dark shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-retro-sm transition-all text-xl"

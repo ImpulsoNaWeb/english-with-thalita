@@ -232,6 +232,14 @@ class ConteudoSeeder extends Seeder
             'grupo' => 'planos'
         ]);
 
+        Configuracao::updateOrCreate(['chave' => 'whatsapp_mensagem_plano'], [
+            'valor' => [
+                'pt_BR' => 'Olá, vi os detalhes do plano [PLAN] e gostaria de conversar!',
+                'en' => 'Hi, I saw the details for the [PLAN] plan and would like to talk!'
+            ],
+            'grupo' => 'planos'
+        ]);
+
         // Serviços (Planos)
         Servico::updateOrCreate(['icone' => 'fa-solid fa-fire'], [
             'nome' => ['pt_BR' => 'Conversação na Prática', 'en' => 'Conversation Practice'],

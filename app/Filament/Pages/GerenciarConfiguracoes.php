@@ -153,6 +153,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                                 TextInput::make('secao_planos_titulo.pt_BR')->label('Título da Seção (PT)'),
                                                 Textarea::make('secao_planos_descricao.pt_BR')->label('Descrição da Seção (PT)'),
                                                 TextInput::make('texto_whatsapp_modal.pt_BR')->label('Botão do Modal WhatsApp (PT)'),
+                                                TextInput::make('whatsapp_mensagem_plano.pt_BR')->label('Template de Mensagem WhatsApp (PT)')->helperText('Use [PLAN] para o nome do plano.'),
                                             ]),
                                         Tabs\Tab::make('Inglês')
                                             ->schema([
@@ -160,6 +161,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                                 TextInput::make('secao_planos_titulo.en')->label('Título da Seção (EN)'),
                                                 Textarea::make('secao_planos_descricao.en')->label('Descrição da Seção (EN)'),
                                                 TextInput::make('texto_whatsapp_modal.en')->label('Botão do Modal WhatsApp (EN)'),
+                                                TextInput::make('whatsapp_mensagem_plano.en')->label('Template de Mensagem WhatsApp (EN)')->helperText('Use [PLAN] para o nome do plano.'),
                                             ]),
                                     ]),
                             ]),
