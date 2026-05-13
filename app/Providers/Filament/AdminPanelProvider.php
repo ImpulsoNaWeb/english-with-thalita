@@ -42,8 +42,8 @@ class AdminPanelProvider extends PanelProvider
             )
             ->renderHook(
                 \Filament\View\PanelsRenderHook::HEAD_START,
-                fn (): string => '
-                    <meta name="apple-mobile-web-app-capable" content="yes">
+                fn (): string => <<<'HTML'
+                    <meta name="mobile-web-app-capable" content="yes">
                     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
                     <link rel="manifest" href="/manifest.json">
                     <style>
@@ -88,14 +88,15 @@ class AdminPanelProvider extends PanelProvider
                     <script>
                         document.addEventListener("DOMContentLoaded", function() {
                             const hideElements = () => {
-                                document.querySelectorAll("[wire\\:click*=\'reorderRecords\']").forEach(el => el.remove());
+                                document.querySelectorAll('[wire\\:click*="reorderRecords"]').forEach(el => el.remove());
                                 document.querySelectorAll(".fi-ta-reorder-indicator").forEach(el => el.remove());
                             };
                             hideElements();
                             new MutationObserver(hideElements).observe(document.body, { childList: true, subtree: true });
                         });
                     </script>
-                ',
+HTML
+,
             )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
