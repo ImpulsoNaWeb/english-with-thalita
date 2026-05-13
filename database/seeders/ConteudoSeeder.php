@@ -41,6 +41,11 @@ class ConteudoSeeder extends Seeder
             'grupo' => 'hero'
         ]);
         
+        Configuracao::updateOrCreate(['chave' => 'foto_hero'], [
+            'valor' => null,
+            'grupo' => 'hero'
+        ]);
+        
         // Sobre
         Configuracao::updateOrCreate(['chave' => 'sobre_badge'], [
             'valor' => ['pt_BR' => 'Por que escolher as aulas?', 'en' => 'Why choose these classes?'],
@@ -64,7 +69,7 @@ class ConteudoSeeder extends Seeder
         ]);
         
         Configuracao::updateOrCreate(['chave' => 'foto_sobre'], [
-            'valor' => 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            'valor' => 'seed/thalita_sobre.jpg',
             'grupo' => 'sobre'
         ]);
         

@@ -38,13 +38,13 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
             $this->dados[$config->chave] = $config->getTranslations('valor');
             
             // Se for um campo que não usa abas no form, pegamos o valor atual
-            if (in_array($config->chave, ['nome_site', 'cor_primaria', 'whatsapp_contato', 'contato_email', 'contato_telefone', 'social_instagram', 'social_facebook', 'logo_site', 'favicon_site'])) {
+            if (in_array($config->chave, ['nome_site', 'cor_primaria', 'whatsapp_contato', 'contato_email', 'contato_telefone', 'social_instagram', 'social_facebook', 'logo_site', 'favicon_site', 'foto_sobre', 'foto_hero'])) {
                 $this->dados[$config->chave] = $config->valor;
             }
         }
         
         // Garantir que campos de arquivo sejam sempre arrays para o Filament
-        foreach (['logo_site', 'favicon_site', 'foto_sobre'] as $campo) {
+        foreach (['logo_site', 'favicon_site', 'foto_sobre', 'foto_hero'] as $campo) {
             $valor = $this->dados[$campo] ?? null;
             if ($valor) {
                 $this->dados[$campo] = is_array($valor) ? $valor : [$valor];
@@ -92,11 +92,17 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                                 TextInput::make('texto_botao_hero.en')->label('Botão do Hero (EN)'),
                                             ]),
                                     ]),
+                                FileUpload::make('foto_hero')
+                                    ->label('Foto de Fundo do Hero (Opcional)')
+                                    ->image()
+                                    ->disk('public')
+                                    ->visibility('public'),
                             ]),
                         Tabs\Tab::make('Sobre')
                             ->schema([
                                 FileUpload::make('foto_sobre')
-                                    ->label('Imagem da Seção Sobre')
+                                    ->label('Foto da Thalita (Seção Sobre)')
+                                    ->helperText('Esta é a foto principal que aparece ao lado do texto "Por que escolher as aulas?"')
                                     ->image()
                                     ->disk('public')
                                     ->visibility('public')

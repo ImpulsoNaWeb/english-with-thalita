@@ -15,4 +15,8 @@ A aplicação falhava durante o `composer install` (especificamente no `package:
 - Banco de dados: Configurado e migrado.
 - Aplicação: Rodando via `php artisan serve`.
 - Erros de boot: Resolvidos.
-- Fluxo de Conversão: Link direto para WhatsApp nos detalhes dos planos implementado.
+- **Fluxo de Conversão:** Link direto para WhatsApp nos detalhes dos planos implementado.
+- **Gestão de Fotos do Site:** 
+  - Centralizada a troca da foto da seção "Sobre" na aba "Sobre" das configurações.
+  - Adicionado campo para "Foto de Fundo do Hero" (opcional).
+  - Atualizado o `ConteudoSeeder` para utilizar caminhos locais (`seed/thalita_sobre.jpg`), facilitando o setup inicial com as fotos reais da Thalita.
