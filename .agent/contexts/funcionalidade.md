@@ -15,7 +15,9 @@ A aplicação falhava durante o `composer install` (especificamente no `package:
 - Banco de dados: Configurado e migrado.
 - Aplicação: Rodando via `php artisan serve`.
 - Erros de boot: Resolvidos.
-- **Fluxo de Conversão:** Link direto para WhatsApp nos detalhes dos planos implementado.
+- **Fluxo de Conversão:** 
+  - Link direto para WhatsApp nos detalhes dos planos agora inclui o nome do plano selecionado na mensagem (Ex: "Olá, vi os detalhes do plano Conversação na Prática...").
+  - Suporte completo a traduções (PT/EN) para a mensagem do WhatsApp.
 - **Gestão de Fotos do Site:** 
   - Centralizada a troca da foto da seção "Sobre" na aba "Sobre" das configurações.
   - Adicionado campo para "Foto de Fundo do Hero" (opcional).
