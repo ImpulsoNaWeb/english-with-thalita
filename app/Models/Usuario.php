@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\HasName;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
-class Usuario extends Authenticatable implements HasName
+class Usuario extends Authenticatable implements HasName, FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UsuarioFactory> */
     use HasFactory, Notifiable;
@@ -63,5 +65,10 @@ class Usuario extends Authenticatable implements HasName
     public function getFilamentName(): string
     {
         return $this->nome;
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 }

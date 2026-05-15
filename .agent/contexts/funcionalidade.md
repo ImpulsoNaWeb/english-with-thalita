@@ -16,3 +16,7 @@ A aplicação falhava durante o `composer install` (especificamente no `package:
   - **Console Errors:** Corrigido seletor JavaScript no `AdminPanelProvider.php` (usando Nowdoc para gestão segura de backslashes) e atualizada a metatag `mobile-web-app-capable`.
   - **PWA Manifest:** Limpeza de assets inexistentes para eliminar erros 404.
   - **Environment:** Ajustado `.env` para suporte a `APP_URL` com HTTPS e modo de depuração.
+
+## Ajustes de Acesso e Sessão (2026-05-15)
+- **Autorização Filament:** Implementada a interface `FilamentUser` no model `Usuario` e adicionado o método `canAccessPanel` retornando `true` para resolver erros 403 no ambiente de produção (VPS).
+- **Estabilização de Sessão:** Alterado `SESSION_DRIVER` de `database` para `file` no `.env` para evitar conflitos de persistência e garantir estabilidade da sessão na VPS.
