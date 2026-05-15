@@ -27,6 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login(\App\Filament\Auth\Login::class)
+            ->profile(\App\Filament\Pages\Auth\EditarPerfil::class)
             ->brandName('Painel English with Thalita')
             ->colors([
                 'primary' => \App\Models\Configuracao::get('cor_primaria', '#1d8985'),
@@ -83,6 +84,21 @@ class AdminPanelProvider extends PanelProvider
                         .fi-ta-actions button:has(svg) {
                             display: none !important;
                             visibility: hidden !important;
+                        }
+
+                        /* Estilização de Botões Primários (Emerald) */
+                        .fi-btn-color-primary {
+                            background-color: #10b981 !important; /* emerald-500 */
+                            border-radius: 0.75rem !important;
+                            font-weight: 700 !important;
+                            transition: all 0.2s ease !important;
+                        }
+                        .fi-btn-color-primary:hover {
+                            background-color: #059669 !important; /* emerald-600 */
+                            transform: translateY(-1px);
+                        }
+                        .fi-btn-color-primary:active {
+                            transform: scale(0.95);
                         }
                     </style>
                     <script>
