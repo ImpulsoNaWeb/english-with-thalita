@@ -68,6 +68,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                     ->image()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados).')
+                                    ->directory('configuracoes')
                                     ->disk('public')
                                     ->visibility('public'),
                                 FileUpload::make('favicon_site')
@@ -75,6 +76,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                     ->image()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/x-icon', 'image/vnd.microsoft.icon'])
                                     ->helperText('Formatos aceitos: ICO, PNG, JPG, JPEG, WEBP.')
+                                    ->directory('configuracoes')
                                     ->disk('public')
                                     ->visibility('public'),
                                 ColorPicker::make('cor_primaria')->label('Cor Primária'),
@@ -101,6 +103,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                     ->image()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados).')
+                                    ->directory('configuracoes')
                                     ->disk('public')
                                     ->visibility('public'),
                             ]),
@@ -111,6 +114,7 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                     ->image()
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                     ->helperText('Esta é a foto principal ao lado do texto "Por que escolher as aulas?". Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados e precisam ser convertidos).')
+                                    ->directory('configuracoes')
                                     ->disk('public')
                                     ->visibility('public')
                                     ->columnSpanFull(),
