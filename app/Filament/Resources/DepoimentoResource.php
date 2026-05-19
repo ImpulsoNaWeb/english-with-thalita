@@ -39,36 +39,16 @@ class DepoimentoResource extends Resource
                             ->tabs([
                                 \Filament\Schemas\Components\Tabs\Tab::make('Português')
                                     ->schema([
-                                        Forms\Components\TextInput::make('cargo_autor.pt_BR')
-                                            ->label('Cargo/Empresa (PT)'),
                                         Forms\Components\Textarea::make('conteudo.pt_BR')
                                             ->label('Comentário (PT)')
                                             ->required(),
                                     ]),
                                 \Filament\Schemas\Components\Tabs\Tab::make('Inglês')
                                     ->schema([
-                                        Forms\Components\TextInput::make('cargo_autor.en')
-                                            ->label('Cargo/Empresa (EN)'),
                                         Forms\Components\Textarea::make('conteudo.en')
                                             ->label('Comentário (EN)'),
                                     ]),
                             ]),
-                        Forms\Components\Select::make('nota')
-                            ->label('Avaliação')
-                            ->options([
-                                5 => '5 Estrelas',
-                                4 => '4 Estrelas',
-                                3 => '3 Estrelas',
-                                2 => '2 Estrelas',
-                                1 => '1 Estrela',
-                            ])
-                            ->default(5),
-                        Forms\Components\FileUpload::make('avatar_autor')
-                            ->label('Foto do Autor')
-                            ->image()
-                            ->disk('public')
-                            ->visibility('public')
-                            ->directory('depoimentos'),
                         Forms\Components\Toggle::make('esta_ativo')
                             ->label('Ativo')
                             ->default(true),
@@ -82,6 +62,8 @@ class DepoimentoResource extends Resource
                         Forms\Components\FileUpload::make('seo_image')
                             ->label('Imagem Open Graph')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP.')
                             ->disk('public')
                             ->visibility('public')
                             ->directory('seo'),
@@ -98,15 +80,9 @@ class DepoimentoResource extends Resource
             ->paginated(false)
             ->reorderRecordsTriggerAction(fn ($action) => $action->hidden())
             ->columns([
-                Tables\Columns\ImageColumn::make('avatar_autor')
-                    ->label('Foto')
-                    ->circular(),
                 Tables\Columns\TextColumn::make('nome_autor')
                     ->label('Autor')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('nota')
-                    ->label('Nota')
-                    ->sortable(),
                 Tables\Columns\ToggleColumn::make('esta_ativo')
                     ->label('Ativo'),
                 Tables\Columns\TextColumn::make('acoes')

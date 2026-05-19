@@ -73,6 +73,68 @@ class ConteudoSeeder extends Seeder
             'grupo' => 'sobre'
         ]);
         
+        Configuracao::updateOrCreate(['chave' => 'filosofia_ensino'], [
+            'valor' => [
+                'pt_BR' => 'Quero que meus alunos sintam que eu acredito neles, que quero ajudá-los a enxergar do que são capazes e mostrar que aprender inglês pode ser divertido, significativo e inspirador.',
+                'en' => 'I want my students to feel that I believe in them, want to help them see what they are capable of, and show them that learning English can be fun, meaningful, and inspiring.'
+            ],
+            'grupo' => 'sobre'
+        ]);
+        
+        $principios_pt = [
+            ['texto' => 'Construir confiança vem antes da perfeição.'],
+            ['texto' => 'A comunicação vem antes da gramática.'],
+            ['texto' => 'A curiosidade é mais importante do que a memorização.'],
+            ['texto' => 'Os erros fazem parte do processo.'],
+            ['texto' => 'Todo aluno é mais capaz do que imagina.'],
+            ['texto' => 'O inglês é uma ferramenta de expressão pessoal.'],
+            ['texto' => 'Aprender deve ser algo significativo e prazeroso.'],
+            ['texto' => 'Grandes professores ajudam seus alunos a acreditarem em si mesmos.'],
+        ];
+
+        $principios_en = [
+            ['texto' => 'Build confidence before perfection.'],
+            ['texto' => 'Communication comes before grammar.'],
+            ['texto' => 'Curiosity is more important than memorization.'],
+            ['texto' => 'Mistakes are part of the process.'],
+            ['texto' => 'Every student is more capable than they think.'],
+            ['texto' => 'English is a tool for self-expression.'],
+            ['texto' => 'Learning should feel meaningful and enjoyable.'],
+            ['texto' => 'Great teachers help students believe in themselves.'],
+        ];
+
+        Configuracao::updateOrCreate(['chave' => 'principios_aulas'], [
+            'valor' => [
+                'pt_BR' => $principios_pt,
+                'en' => $principios_en
+            ],
+            'grupo' => 'sobre'
+        ]);
+
+        Configuracao::updateOrCreate(['chave' => 'secao_principios_badge'], [
+            'valor' => [
+                'pt_BR' => 'Princípios Fundamentais',
+                'en' => 'Core Principles'
+            ],
+            'grupo' => 'sobre'
+        ]);
+
+        Configuracao::updateOrCreate(['chave' => 'secao_principios_titulo'], [
+            'valor' => [
+                'pt_BR' => 'Como funcionam as minhas aulas',
+                'en' => 'How my classes work'
+            ],
+            'grupo' => 'sobre'
+        ]);
+
+        Configuracao::updateOrCreate(['chave' => 'secao_principios_descricao'], [
+            'valor' => [
+                'pt_BR' => 'Pilares que transformam o aprendizado de inglês em uma experiência leve, prática e transformadora.',
+                'en' => 'Pillars that transform English learning into a light, practical, and life-changing experience.'
+            ],
+            'grupo' => 'sobre'
+        ]);
+
         // Diferenciais
         $difs_pt = [
             [

@@ -34,6 +34,24 @@
         }
     }
 
+    $principios = $c->has('principios_aulas') ? $c['principios_aulas']->valor : [];
+    if (is_string($principios)) $principios = json_decode($principios, true) ?? [];
+    
+    if ($c->has('principios_aulas')) {
+        $val_pt = $c['principios_aulas']->getTranslation('valor', 'pt_BR') ?? '[]';
+        $prins_pt = is_string($val_pt) ? json_decode($val_pt, true) : $val_pt;
+        if (!is_array($prins_pt)) $prins_pt = [];
+
+        $val_en = $c['principios_aulas']->getTranslation('valor', 'en') ?? '[]';
+        $prins_en = is_string($val_en) ? json_decode($val_en, true) : $val_en;
+        if (!is_array($prins_en)) $prins_en = [];
+
+        foreach($principios as $index => $prin) {
+            $dbTranslations['pt']['prin_texto_' . $index] = $prins_pt[$index]['texto'] ?? '';
+            $dbTranslations['en']['prin_texto_' . $index] = $prins_en[$index]['texto'] ?? '';
+        }
+    }
+
     foreach($servicos as $index => $servico) {
         $dbTranslations['pt']['serv_titulo_' . $index] = $servico->getTranslation('nome', 'pt_BR') ?? '';
         $dbTranslations['en']['serv_titulo_' . $index] = $servico->getTranslation('nome', 'en') ?? '';
@@ -48,8 +66,6 @@
     foreach($depoimentos as $index => $depo) {
         $dbTranslations['pt']['depo_nome_' . $index] = $depo->nome_autor;
         $dbTranslations['en']['depo_nome_' . $index] = $depo->nome_autor;
-        $dbTranslations['pt']['depo_cargo_' . $index] = $depo->getTranslation('cargo_autor', 'pt_BR') ?? '';
-        $dbTranslations['en']['depo_cargo_' . $index] = $depo->getTranslation('cargo_autor', 'en') ?? '';
         $dbTranslations['pt']['depo_conteudo_' . $index] = '"' . ($depo->getTranslation('conteudo', 'pt_BR') ?? '') . '"';
         $dbTranslations['en']['depo_conteudo_' . $index] = '"' . ($depo->getTranslation('conteudo', 'en') ?? '') . '"';
     }
@@ -267,22 +283,67 @@
             </div>
         </section>
 
+        <!-- Seção Filosofia / Manifesto -->
+        @if(!empty($c['filosofia_ensino']->valor))
+        <section class="py-16 bg-brand-dark border-y-[4px] border-brand-dark relative z-10 overflow-hidden">
+            <!-- Decorative retro circles in the background -->
+            <div class="absolute -left-16 -top-16 w-32 h-32 bg-brand-red rounded-full opacity-20"></div>
+            <div class="absolute -right-16 -bottom-16 w-32 h-32 bg-brand-accent rounded-full opacity-20"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="flex flex-col items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-[3px] bg-brand-orange"></span>
+                        <span data-i18n="filosofia_badge" class="text-brand-orange font-black text-xs uppercase tracking-widest">
+                            Minha Missão de Ensino
+                        </span>
+                        <span class="w-8 h-[3px] bg-brand-orange"></span>
+                    </div>
+                    
+                    <h3 class="text-white text-2xl md:text-3xl font-black leading-relaxed italic max-w-3xl text-balance">
+                        <span class="text-brand-orange text-4xl md:text-5xl font-serif inline-block align-top mr-1">“</span>
+                        <span data-i18n="c_filosofia_ensino" class="inline">
+                            {{ $c['filosofia_ensino']->valor ?? '' }}
+                        </span>
+                        <span class="text-brand-orange text-4xl md:text-5xl font-serif inline-block align-bottom ml-1">”</span>
+                    </h3>
+                </div>
+            </div>
+        </section>
+        @endif
+
         <!-- Sobre / Diferenciais -->
         <section id="sobre" class="py-24 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div class="order-2 lg:order-1 relative">
-                        <div
-                            class="absolute inset-0 bg-brand-orange rounded-3xl transform translate-x-4 translate-y-4 border-[3px] border-brand-dark">
+                    <div class="order-2 lg:order-1 flex flex-col gap-8">
+                        <div class="relative">
+                            <div
+                                class="absolute inset-0 bg-brand-orange rounded-3xl transform translate-x-4 translate-y-4 border-[3px] border-brand-dark">
+                            </div>
+                            @php
+                                $fotoSobre = $c['foto_sobre']->valor ?? 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                                if (is_array($fotoSobre)) $fotoSobre = $fotoSobre[0] ?? null;
+                                $fotoUrl = (str_starts_with($fotoSobre, 'http')) ? $fotoSobre : asset('storage/' . $fotoSobre);
+                            @endphp
+                            <img src="{{ $fotoUrl }}"
+                                alt="{{ $c['sobre_titulo']->valor ?? 'Thalita ensinando' }}"
+                                class="w-full h-auto object-cover rounded-3xl border-[3px] border-brand-dark relative z-10 grayscale-[20%] sepia-[20%]">
                         </div>
-                        @php
-                            $fotoSobre = $c['foto_sobre']->valor ?? 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-                            if (is_array($fotoSobre)) $fotoSobre = $fotoSobre[0] ?? null;
-                            $fotoUrl = (str_starts_with($fotoSobre, 'http')) ? $fotoSobre : asset('storage/' . $fotoSobre);
-                        @endphp
-                        <img src="{{ $fotoUrl }}"
-                            alt="{{ $c['sobre_titulo']->valor ?? 'Thalita ensinando' }}"
-                            class="w-full h-auto object-cover rounded-3xl border-[3px] border-brand-dark relative z-10 grayscale-[20%] sepia-[20%]">
+
+                        <!-- Filosofia de Ensino Card (Opção 1) -->
+                        @if(!empty($c['filosofia_ensino']->valor))
+                        <div class="relative mt-2">
+                            <div class="absolute inset-0 bg-brand-alert rounded-3xl transform translate-x-3 translate-y-3 border-[3px] border-brand-dark"></div>
+                            <div class="bg-brand-card border-[3px] border-brand-dark rounded-3xl p-6 md:p-8 relative z-10 flex flex-col gap-4">
+                                <div class="text-brand-dark text-4xl font-serif leading-none h-4">“</div>
+                                <p data-i18n="c_filosofia_ensino" class="text-brand-dark text-lg font-bold italic leading-relaxed text-balance">
+                                    {{ $c['filosofia_ensino']->valor ?? '' }}
+                                </p>
+                                <div class="text-brand-dark text-4xl font-serif leading-none h-4 text-right">”</div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
 
                     <div
@@ -320,6 +381,55 @@
                 </div>
             </div>
         </section>
+
+        <!-- Princípios Fundamentais -->
+        @if(!empty($principios))
+        <section id="principios" class="py-24 bg-brand-bgLight relative overflow-hidden border-t-[3px] border-brand-dark">
+            <!-- Decorative background items -->
+            <div class="absolute -right-16 -top-16 w-36 h-36 bg-brand-accent/10 rounded-full border-2 border-brand-dark"></div>
+            <div class="absolute -left-16 -bottom-16 w-36 h-36 bg-brand-red/10 rounded-full border-2 border-brand-dark"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span data-i18n="c_secao_principios_badge"
+                        class="inline-block bg-brand-red text-white font-black text-sm uppercase tracking-widest py-1 px-3 border-2 border-brand-dark rounded-full mb-4 transform -rotate-1 animate-pulse">
+                        {{ $c['secao_principios_badge']->valor ?? 'Princípios Fundamentais' }}
+                    </span>
+                    <h2 data-i18n="c_secao_principios_titulo" class="text-4xl md:text-5xl font-black text-brand-dark mb-4">
+                        {{ $c['secao_principios_titulo']->valor ?? 'Como funcionam as minhas aulas' }}
+                    </h2>
+                    <p data-i18n="c_secao_principios_descricao" class="text-xl font-medium text-brand-dark/70">
+                        {{ $c['secao_principios_descricao']->valor ?? 'Pilares que transformam o aprendizado de inglês em uma experiência leve, prática e transformadora.' }}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                    @php
+                        $principios_icones = [
+                            'fa-solid fa-shield-heart',
+                            'fa-solid fa-comments',
+                            'fa-solid fa-lightbulb',
+                            'fa-solid fa-circle-notch',
+                            'fa-solid fa-arrow-trend-up',
+                            'fa-solid fa-pen-nib',
+                            'fa-solid fa-face-smile-wink',
+                            'fa-solid fa-star'
+                        ];
+                    @endphp
+                    @foreach($principios as $index => $prin)
+                    <div class="bg-brand-bg border-[3px] border-brand-dark rounded-2xl p-6 shadow-retro transform hover:-translate-y-1 transition-transform duration-200 flex items-center gap-5">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-card border-2 border-brand-dark shadow-retro-sm flex items-center justify-center text-brand-dark">
+                            <i class="{{ $principios_icones[$index % count($principios_icones)] }} text-xl"></i>
+                        </div>
+                        <h4 class="text-brand-dark font-black text-lg leading-snug">
+                            <span data-i18n="prin_texto_{{ $index }}">{{ $prin['texto'] }}</span>
+                        </h4>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        @endif
 
         <!-- Serviços / Planos -->
         <section id="servicos" class="py-24 relative">
@@ -410,25 +520,8 @@
                     @foreach($depoimentos as $index => $depo)
                     <div
                         class="{{ $index % 2 == 0 ? 'bg-brand-bg' : 'bg-brand-cardLight' }} border-[3px] border-brand-dark rounded-3xl shadow-retro p-8 transform hover:-translate-y-2 transition-transform duration-300 {{ $index == 1 ? 'relative top-0 lg:top-8' : ($index == 3 ? 'lg:-top-8 relative' : ($index == 5 ? 'relative lg:-top-8' : '')) }}">
-                        <div class="flex items-center gap-4 mb-6">
-                            @if($depo->avatar_autor)
-                            <img src="{{ Storage::url($depo->avatar_autor) }}"
-                                alt="{{ $depo->nome_autor }}"
-                                class="w-16 h-16 rounded-full border-2 border-brand-dark object-cover grayscale-[20%]">
-                            @else
-                            <div class="w-16 h-16 rounded-full border-2 border-brand-dark bg-brand-accent flex items-center justify-center text-white text-2xl font-black">
-                                {{ substr($depo->nome_autor, 0, 1) }}
-                            </div>
-                            @endif
-                            <div>
-                                <h4 class="font-black text-brand-dark text-lg"><span data-i18n="depo_nome_{{ $index }}">{{ $depo->nome_autor }}</span></h4>
-                                <p class="text-brand-dark/70 text-sm font-bold"><span data-i18n="depo_cargo_{{ $index }}">{{ $depo->cargo_autor }}</span></p>
-                            </div>
-                        </div>
-                        <div class="flex text-brand-alert mb-4 text-sm">
-                            @for($i=0; $i<$depo->nota; $i++)
-                            <i class="fa-solid fa-star"></i>
-                            @endfor
+                        <div class="mb-6">
+                            <h4 class="font-black text-brand-dark text-lg"><span data-i18n="depo_nome_{{ $index }}">{{ $depo->nome_autor }}</span></h4>
                         </div>
                         <p class="text-brand-dark font-medium italic"><span data-i18n="depo_conteudo_{{ $index }}">"{{ $depo->conteudo }}"</span></p>
                     </div>
@@ -612,6 +705,7 @@
                 'nav_cta': 'Agendar Aula',
                 'mob_nav_cta': 'Fale no WhatsApp',
                 'hero_swipe': 'deslize para me conhecer <i class="fa-solid fa-arrow-down"></i>',
+                'filosofia_badge': 'Minha Missão de Ensino',
                 'card_btn': 'Quero este plano',
                 'card_btn_details': 'Ver Detalhes e Preços',
                 'footer_nav_title': 'Navegação',
@@ -624,6 +718,7 @@
                 'footer_dev': 'Desenvolvido por'
             },
             'en': {
+                'filosofia_badge': 'My Teaching Mission',
                 'nav_sobre': 'About',
                 'nav_planos': 'Study Plans',
                 'nav_depoimentos': 'Testimonials',

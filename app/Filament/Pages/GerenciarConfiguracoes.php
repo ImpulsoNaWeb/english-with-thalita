@@ -66,11 +66,15 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                 FileUpload::make('logo_site')
                                     ->label('Logo')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados).')
                                     ->disk('public')
                                     ->visibility('public'),
                                 FileUpload::make('favicon_site')
                                     ->label('Favicon')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/x-icon', 'image/vnd.microsoft.icon'])
+                                    ->helperText('Formatos aceitos: ICO, PNG, JPG, JPEG, WEBP.')
                                     ->disk('public')
                                     ->visibility('public'),
                                 ColorPicker::make('cor_primaria')->label('Cor Primária'),
@@ -95,6 +99,8 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                 FileUpload::make('foto_hero')
                                     ->label('Foto de Fundo do Hero (Opcional)')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados).')
                                     ->disk('public')
                                     ->visibility('public'),
                             ]),
@@ -102,8 +108,9 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                             ->schema([
                                 FileUpload::make('foto_sobre')
                                     ->label('Foto da Thalita (Seção Sobre)')
-                                    ->helperText('Esta é a foto principal que aparece ao lado do texto "Por que escolher as aulas?"')
                                     ->image()
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->helperText('Esta é a foto principal ao lado do texto "Por que escolher as aulas?". Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados e precisam ser convertidos).')
                                     ->disk('public')
                                     ->visibility('public')
                                     ->columnSpanFull(),
@@ -114,6 +121,10 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                                 TextInput::make('sobre_badge.pt_BR')->label('Badge (PT)')->default('Por que escolher as aulas?'),
                                                 TextInput::make('sobre_titulo.pt_BR')->label('Título (PT)')->default('Inglês focado na sua comunicação real'),
                                                 Textarea::make('sobre_descricao.pt_BR')->label('Descrição (PT)'),
+                                                Textarea::make('filosofia_ensino.pt_BR')
+                                                    ->label('Missão de Ensino (PT)')
+                                                    ->helperText('Aparece tanto no card abaixo da foto quanto na faixa horizontal de transição (ambos ativos para comparação).')
+                                                    ->rows(3),
                                                 Repeater::make('diferenciais.pt_BR')
                                                     ->label('Diferenciais (PT)')
                                                     ->schema([
@@ -130,6 +141,10 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                                 TextInput::make('sobre_badge.en')->label('Badge (EN)'),
                                                 TextInput::make('sobre_titulo.en')->label('Título (EN)'),
                                                 Textarea::make('sobre_descricao.en')->label('Descrição (EN)'),
+                                                Textarea::make('filosofia_ensino.en')
+                                                    ->label('Missão de Ensino (EN)')
+                                                    ->helperText('Appears in the card below your photo and in the horizontal transition banner (both active for comparison).')
+                                                    ->rows(3),
                                                 Repeater::make('diferenciais.en')
                                                     ->label('Diferenciais (EN)')
                                                     ->schema([
@@ -140,6 +155,38 @@ class GerenciarConfiguracoes extends Page implements HasSchemas
                                                     ])
                                                     ->columns(2)
                                                     ->defaultItems(3),
+                                            ]),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Princípios das Aulas')
+                            ->schema([
+                                Tabs::make('Idiomas Princípios')
+                                    ->tabs([
+                                        Tabs\Tab::make('Português')
+                                            ->schema([
+                                                TextInput::make('secao_principios_badge.pt_BR')->label('Badge da Seção (PT)'),
+                                                TextInput::make('secao_principios_titulo.pt_BR')->label('Título da Seção (PT)'),
+                                                Textarea::make('secao_principios_descricao.pt_BR')->label('Descrição da Seção (PT)'),
+                                                Repeater::make('principios_aulas.pt_BR')
+                                                    ->label('Princípios das Aulas (PT)')
+                                                    ->schema([
+                                                        TextInput::make('texto')->label('Princípio')->required(),
+                                                    ])
+                                                    ->createItemButtonLabel('Adicionar Princípio')
+                                                    ->defaultItems(8),
+                                            ]),
+                                        Tabs\Tab::make('Inglês')
+                                            ->schema([
+                                                TextInput::make('secao_principios_badge.en')->label('Badge da Seção (EN)'),
+                                                TextInput::make('secao_principios_titulo.en')->label('Título da Seção (EN)'),
+                                                Textarea::make('secao_principios_descricao.en')->label('Descrição da Seção (EN)'),
+                                                Repeater::make('principios_aulas.en')
+                                                    ->label('Princípios das Aulas (EN)')
+                                                    ->schema([
+                                                        TextInput::make('texto')->label('Princípio')->required(),
+                                                    ])
+                                                    ->createItemButtonLabel('Add Principle')
+                                                    ->defaultItems(8),
                                             ]),
                                     ]),
                             ]),

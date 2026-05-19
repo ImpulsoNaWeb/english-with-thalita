@@ -71,6 +71,8 @@ class ServicoResource extends Resource
                         Forms\Components\FileUpload::make('imagem')
                             ->label('Imagem de Capa')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP (arquivos HEIC/HEIF do iPhone não são suportados).')
                             ->disk('public')
                             ->visibility('public')
                             ->directory('servicos'),
@@ -87,6 +89,8 @@ class ServicoResource extends Resource
                         Forms\Components\FileUpload::make('seo_image')
                             ->label('Imagem Open Graph')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->helperText('Formatos aceitos: JPG, JPEG, PNG, WEBP.')
                             ->disk('public')
                             ->visibility('public')
                             ->directory('seo'),
