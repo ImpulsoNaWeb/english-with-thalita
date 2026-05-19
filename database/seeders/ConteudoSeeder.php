@@ -391,68 +391,56 @@ class ConteudoSeeder extends Seeder
         // Depoimentos
         $depoimentos = [
             [
-                'nome' => 'Mariana Silva, 22',
-                'cargo' => ['pt_BR' => 'Estudante Universitária', 'en' => 'University Student'],
+                'nome' => 'Fernanda Rodrigues',
                 'conteudo' => [
-                    'pt_BR' => '"Eu travava completamente na hora de falar. Em poucos meses com a Thalita, perdi o medo e consegui a pontuação que precisava no TOEFL para meu intercâmbio!"',
-                    'en' => '"I completely froze when speaking. In just a few months with Thalita, I lost the fear and got the TOEFL score I needed for my exchange!"'
-                ],
-                'avatar' => 'seed/depo_mariana_v2.png'
+                    'pt_BR' => 'A professora Thalita é incrível! Suas aulas são muito dinâmicas, criativas e informativas. Eu adorei conhecê-la e ter a oportunidade de melhorar meu inglês com ela. Ela incentiva seus alunos de forma natural a falar e praticar durante as aulas. Obrigada, professora Thalita, por todo o seu esforço e dedicação conosco.',
+                    'en' => 'Teacher Thalita is amazing! Her classes are so dynamic, creative, and informative. I really liked meeting her to improve my English. She naturally encourages her students to speak and practice during classes. Thank you, teacher Thalita, for your effort and dedication to us.'
+                ]
             ],
             [
-                'nome' => 'Carlos Eduardo, 34',
-                'cargo' => ['pt_BR' => 'Desenvolvedor Sênior', 'en' => 'Senior Developer'],
+                'nome' => 'Sara França',
                 'conteudo' => [
-                    'pt_BR' => '"As aulas focadas em Business English mudaram minha carreira. Hoje conduzo reuniões com a equipe gringa sem suar frio. Metodologia muito prática e direto ao ponto."',
-                    'en' => '"Business English focused classes changed my career. Today I lead meetings with the international team without breaking a sweat. Very practical and straight-to-the-point methodology."'
-                ],
-                'avatar' => 'seed/depo_carlos_v2.png'
+                    'pt_BR' => 'O que eu mais gosto nas aulas da Thalita é que ela vai além da gramática e do inglês dos livros. Por ter experiência real com a língua e com a cultura, sinto que estou aprendendo o tipo de inglês que as pessoas realmente usam no dia a dia. As aulas dela me ajudaram a me sentir mais confortável para falar em inglês e mais confiante para usar o idioma de forma natural.',
+                    'en' => 'What I like most about Thalita’s classes is that she teaches beyond grammar and textbook English. Because of her real experience with the language and the culture, I feel like I’m learning the kind of English people actually use in real life. Her classes have helped me feel more comfortable speaking English and more confident using the language naturally.'
+                ]
             ],
             [
-                'nome' => 'Fernanda Costa, 45',
-                'cargo' => ['pt_BR' => 'Empresária', 'en' => 'Businesswoman'],
+                'nome' => 'Andressa Couto',
                 'conteudo' => [
-                    'pt_BR' => '"Sempre achei que estava velha para aprender inglês do zero. A Thalita teve tanta paciência e montou um material tão voltado para minhas viagens que hoje me viro super bem sozinha."',
-                    'en' => '"I always thought I was too old to learn English from scratch. Thalita had so much patience and put together material so focused on my travels that today I manage very well on my own."'
-                ],
-                'avatar' => 'seed/depo_fernanda_v2.png'
+                    'pt_BR' => 'A Thalita é uma professora incrível! Estudar inglês com ela torna o aprendizado uma experiência realmente prazerosa. Não se trata apenas de gramática e comunicação: ela cria um ambiente acolhedor e seguro, que nos ajuda a perder a timidez e o medo de cometer erros.',
+                    'en' => 'Thalita is an amazing teacher! Studying English with her makes learning a truly enjoyable experience. It\'s not just about the grammar and communication skills: she creates a safe environment that helps us overcome shyness and the fear of making mistakes.'
+                ]
             ],
             [
-                'nome' => 'Amanda Reis, 28',
-                'cargo' => ['pt_BR' => 'Designer UX/UI', 'en' => 'UX/UI Designer'],
+                'nome' => 'Bryan Sheldon',
                 'conteudo' => [
-                    'pt_BR' => '"O foco em comunicação real faz toda a diferença. Eu sabia gramática mas não falava. Em poucas aulas já estava me expressando muito melhor do que anos em cursinho."',
-                    'en' => '"The focus on real communication makes all the difference. I knew grammar but didn\'t speak. In just a few classes, I was already expressing myself much better than years in a language school."'
-                ],
-                'avatar' => 'seed/depo_amanda_v2.png'
+                    'pt_BR' => 'Comecei as aulas com um pouco de ceticismo por eu não ser exatamente um aluno aplicado. Combinamos os assuntos e o interesse de aprendizado na aula experimental. Vi bastante resultado nas aulas, que são customizadas. Ao invés de ter uma aula com mistura de inglês/português e muita coisa para decorar, a Thalita foi atrás de trazer assuntos do meu interesse e usos reais para minha profissão. E falar sobre o que a gente gosta ao invés de ficar decorando é muito divertido e passou a agregar muita coisa ao meu vocabulário. Desenrolei assim minha língua pro inglês e sigo fazendo as aulas de conversação para manter afiado o idioma.',
+                    'en' => 'I started my classes with a bit of skepticism because I’m not exactly the most dedicated student. During the trial lesson, we discussed my interests and learning goals. I quickly noticed great results from the customized classes. Instead of traditional lessons with a mix of English and Portuguese and lots of memorization, Thalita brought topics that matched my interests and real-life applications for my profession. Talking about subjects I enjoy, rather than simply memorizing, has been both fun and incredibly helpful for expanding my vocabulary. It has helped me become much more comfortable speaking English, and I continue taking conversation classes to keep my skills sharp.'
+                ]
             ],
             [
-                'nome' => 'Roberto Alves, 52',
-                'cargo' => ['pt_BR' => 'Gerente Comercial', 'en' => 'Sales Manager'],
+                'nome' => 'Fernando de Medeiros',
                 'conteudo' => [
-                    'pt_BR' => '"Precisava melhorar o inglês para uma promoção. A flexibilidade de horários e as aulas personalizadas foram essenciais para conciliar com minha rotina corrida."',
-                    'en' => '"I needed to improve my English for a promotion. The flexible schedule and personalized classes were essential to balance with my busy routine."'
-                ],
-                'avatar' => 'seed/depo_roberto_v2.png'
+                    'pt_BR' => 'A Thalita é extremamente compreensiva e se dedica a ajudar você a evoluir na pronúncia e na gramática. O melhor de tudo é que ela não corrige como uma professora formal, ela conversa com você como uma falante nativa. Ela realmente entende o que você está tentando dizer e apenas ajusta os detalhes para que sua comunicação flua de forma natural. A experiência se parece muito mais com uma mentoria do que com uma aula tradicional e rígida.',
+                    'en' => 'Thalita is incredibly understanding and puts so much effort into helping you level up your pronunciation and grammar. The best part is that she doesn’t just correct you like a formal teacher; she talks to you like a natural speaker. She really gets what you’re trying to say and just fine-tunes the details to make your conversation flow naturally. It feels more like a mentorship than a rigid usual class.'
+                ]
             ],
             [
-                'nome' => 'Lucas Mendes, 18',
-                'cargo' => ['pt_BR' => 'Estudante de Ensino Médio', 'en' => 'High School Student'],
+                'nome' => 'Beatriz Zulini',
                 'conteudo' => [
-                    'pt_BR' => '"As aulas não são chatas como na escola. Falamos de assuntos atuais e práticos. Sinto que estou aprendendo o inglês que realmente se usa no dia a dia e na internet."',
-                    'en' => '"Classes aren\'t boring like in school. We talk about current and practical topics. I feel like I\'m learning the English that\'s actually used in daily life and on the internet."'
-                ],
-                'avatar' => 'seed/depo_lucas_v2.png'
-            ],
+                    'pt_BR' => 'A teacher Thalita é uma professora incrível, ensina muito bem, é engraçada e divertida tornando as aulas mais leves! Eu senti que melhorei muito com as aulas dela, principalmente porque ela não usa muito português durante as aulas, então a gente tem que se virar no inglês e isso nos ajuda muito! Eu super indico 😍',
+                    'en' => 'Teacher Thalita is an amazing teacher. She explains things very well and is funny and engaging, which makes her classes feel light and enjoyable. I feel that I improved a lot with her classes, especially because she uses very little Portuguese, so we have to express ourselves in English, and that helps us tremendously. I highly recommend her classes! 😍'
+                ]
+            ]
         ];
 
         Depoimento::query()->forceDelete();
         $index_depo = 1;
         foreach ($depoimentos as $depo) {
             Depoimento::updateOrCreate(['nome_autor' => $depo['nome']], [
-                'cargo_autor' => $depo['cargo'],
+                'cargo_autor' => ['pt_BR' => '', 'en' => ''],
                 'conteudo' => $depo['conteudo'],
-                'avatar_autor' => $depo['avatar'],
+                'avatar_autor' => '',
                 'nota' => 5,
                 'ordem' => $index_depo++,
                 'esta_ativo' => true,
