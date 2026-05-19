@@ -69,7 +69,7 @@ class ConteudoSeeder extends Seeder
         ]);
         
         Configuracao::updateOrCreate(['chave' => 'foto_sobre'], [
-            'valor' => 'seed/thalita_sobre.jpg',
+            'valor' => 'seed/sobre_thalita.jpg',
             'grupo' => 'sobre'
         ]);
         
