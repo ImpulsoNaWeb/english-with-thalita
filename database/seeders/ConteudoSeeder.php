@@ -421,7 +421,7 @@ class ConteudoSeeder extends Seeder
             [
                 'nome' => 'Fernando de Medeiros',
                 'conteudo' => [
-                    'pt_BR' => 'A Thali é extremamente compreensiva e se dedica a ajudar você a evoluir na pronúncia e na gramática. O melhor de tudo é que ela não corrige como uma professora formal, ela conversa com você como uma falante nativa. Ela realmente entende o que você está tentando dizer e apenas ajusta os detalhes para que sua comunicação flua de forma natural. A experiência se parece muito mais com uma mentoria do que com uma aula tradicional e rígida.',
+                    'pt_BR' => 'A Thalita é extremamente compreensiva e se dedica a ajudar você a evoluir na pronúncia e na gramática. O melhor de tudo é que ela não corrige como uma professora formal, ela conversa com você como uma falante nativa. Ela realmente entende o que você está tentando dizer e apenas ajusta os detalhes para que sua comunicação flua de forma natural. A experiência se parece muito mais com uma mentoria do que com uma aula tradicional e rígida.',
                     'en' => 'Thalita is incredibly understanding and puts so much effort into helping you level up your pronunciation and grammar. The best part is that she doesn’t just correct you like a formal teacher; she talks to you like a natural speaker. She really gets what you’re trying to say and just fine-tunes the details to make your conversation flow naturally. It feels more like a mentorship than a rigid usual class.'
                 ]
             ],
