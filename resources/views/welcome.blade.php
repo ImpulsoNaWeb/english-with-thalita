@@ -283,34 +283,6 @@
             </div>
         </section>
 
-        <!-- Seção Filosofia / Manifesto -->
-        @if(!empty($c['filosofia_ensino']->valor))
-        <section class="py-16 bg-brand-dark border-y-[4px] border-brand-dark relative z-10 overflow-hidden">
-            <!-- Decorative retro circles in the background -->
-            <div class="absolute -left-16 -top-16 w-32 h-32 bg-brand-red rounded-full opacity-20"></div>
-            <div class="absolute -right-16 -bottom-16 w-32 h-32 bg-brand-accent rounded-full opacity-20"></div>
-
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <div class="flex flex-col items-center gap-6">
-                    <div class="flex items-center gap-2">
-                        <span class="w-8 h-[3px] bg-brand-orange"></span>
-                        <span data-i18n="filosofia_badge" class="text-brand-orange font-black text-xs uppercase tracking-widest">
-                            Minha Missão de Ensino
-                        </span>
-                        <span class="w-8 h-[3px] bg-brand-orange"></span>
-                    </div>
-                    
-                    <h3 class="text-white text-2xl md:text-3xl font-black leading-relaxed italic max-w-3xl text-balance">
-                        <span class="text-brand-orange text-4xl md:text-5xl font-serif inline-block align-top mr-1">“</span>
-                        <span data-i18n="c_filosofia_ensino" class="inline">
-                            {{ $c['filosofia_ensino']->valor ?? '' }}
-                        </span>
-                        <span class="text-brand-orange text-4xl md:text-5xl font-serif inline-block align-bottom ml-1">”</span>
-                    </h3>
-                </div>
-            </div>
-        </section>
-        @endif
 
         <!-- Sobre / Diferenciais -->
         <section id="sobre" class="py-24 relative">
